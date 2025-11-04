@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Yokai eSports — Reach out to the team for inquiries, partnerships, or opportunities." />
+  <meta name="theme-color" content="#b30000" />
+  <title>Contact Us — Yokai eSports</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    /* === Theme Variables === */
+    :root {
+      --bg-color: #ffffff; /* Light mode background */
+      --text-color: #222;
+      --header-bg: darkred;
+      --header-text: F9F9F3;
+      --menu-bg: darkred;
+      --menu-text: F9F9F3;
+      --menu-hover-bg: rgba(255,255,255,0.1);
+      --menu-hover-text: #ffcccc;
+      --footer-bg: #111;
+      --footer-text: #bbb;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.6s ease, color 0.6s ease;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: color 0.6s ease;
+    }
+
+    a { text-decoration: none; color: inherit; transition: color 0.6s ease; }
+
+    /* Header */
+    header {
+      background-color: var(--header-bg);
+      color: var(--header-text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 100;
+      transition: background-color 0.6s ease, color 0.6s ease;
+    }
+
+    .left-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo { 
+      font-size: 32px;
+      font-weight: bold;
+      letter-spacing: 4px;
+      color: #e2e0e0;
+      position: relative;
+      z-index: 115;
+      transition: transform 0.5s ease, left 0.5s ease, top 0.5s ease;
+    }
+
+    .menu-button {
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: F9F9F3;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .menu-button:hover { transform: scale(1.2); }
+
+    /* Side Menu Panel */
+    .menu-box {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100vh;
+      background: var(--menu-bg);
+      color: var(--menu-text);
+      box-shadow: 3px 0 15px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      padding-top: 20px;
+      transition: left 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55), background-color 0.6s ease;
+      z-index: 105;
+    }
+    .menu-box.active { left: 0; }
+
+    .menu-logo-placeholder {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-box a {
+      padding: 15px 20px;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .menu-box a:hover {
+      background: var(--menu-hover-bg);
+      color: var(--menu-hover-text);
+    }
+
+    /* Contact Section */
+    .contact-section {
+      text-align: center;
+      padding: 80px 20px;
+      background-color: var(--bg-color);
+      transition: background-color 0.6s ease;
+    }
+
+    .contact-section h2 {
+      color: #b30000;
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      background: F9F9F3;
+      padding: 30px;
+      border-radius: 10px;
+      border: 3px solid #b30000;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: 0.6s ease;
+    }
+
+    form.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 16px;
+    }
+
+    textarea { height: 120px; resize: vertical; }
+
+    button {
+      background-color: #b30000;
+      color: F9F9F3;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover { background-color: darkred; transform: scale(1.05); }
+
+    /* Extra Section */
+    .extra { 
+      background-color: #b30000; 
+      color: F9F9F3; 
+      padding: 60px 20px; 
+      transition: background-color 0.6s ease, color 0.6s ease; 
+    }
+    .extra h2 { font-size: 26px; margin-bottom: 10px; }
+    .extra-columns { display: flex; gap: 20px; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; }
+    .extra-left { flex: 2 1 0; min-width: 260px; }
+    .extra-right { flex: 1 1 0; min-width: 220px; }
+
+    footer {
+      background: #111;
+      color: #bbb;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      transition: background-color 0.6s ease, color 0.6s ease;
+    }
+
+    /* Dark Mode */
+    body.dark-mode {
+      --bg-color: #2c2c2c; /* grey background in dark mode */
+      --text-color: #e0e0e0;
+      --header-bg: darkred;
+      --header-text: #fff;
+      --menu-bg: #1f1f1f;
+      --menu-text: #fff;
+      --menu-hover-bg: rgba(255,255,255,0.1);
+      --menu-hover-text: #ff9999;
+      --footer-bg: #000;
+      --footer-text: #aaa;
+      --extra-bg:darkred;
+      --extra-text: #fff;
+    }
+
+    /* Dark/Light Switch */
+    .theme-switch {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 28px;
+      background-color: rgba(255,255,255,0.2);
+      border-radius: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 2px;
+      transition: background-color 0.4s ease;
+    }
+
+    .switch-thumb {
+      width: 24px;
+      height: 24px;
+      background-color: F9F9F3;
+      border-radius: 50%;
+      transition: transform 0.4s ease, background-color 0.4s ease;
+    }
+
+    body.dark-mode .theme-switch { background-color: rgba(255,255,255,0.4); }
+    body.dark-mode .switch-thumb { transform: translateX(22px); background-color: #ffcc00; }
+
+    @media (max-width: 700px) {
+      .contact-section h2 { font-size: 28px; }
+      form { width: 90%; }
+      .extra-columns { flex-direction: column; }
+      nav ul { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="left-header">
+      <button class="menu-button" id="menuBtn" aria-label="Toggle menu">☰</button>
+      <a href="yokaiEsports.html" class="logo">YOKAI</a>
+    </div>
+  </header>
+
+  <aside class="menu-box" id="menuBox">
+    <div class="menu-logo-placeholder"></div>
+    <a href="news.html">News</a>
+    <a href="partners.html">Partners</a>
+    <a href="content.html">Content</a>
+    <a href="teams.html">Teams</a>
+    <a href="shop.html">Shop</a>
+
+    <div id="themeToggle" class="theme-switch">
+      <div class="switch-thumb"></div>
+    </div>
+  </aside>
+
+  <section class="contact-section">
+    <h2>Contact Us</h2>
+    <form action="sendMail.php" method="post">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message..." required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Extra Section -->
+  <section class="extra">
+    <div class="extra-columns">
+      <div class="extra-left">
+        <h2>YOKAI</h2>
+        <p><a href="https://discord.gg/nNDV95nMwx" target="_blank"><strong>Discord</strong></a></p>
+        <p>Email: <strong>sxmikas@yokaiesports.com</strong></p>
+        <p>Twitter: <a href="https://x.com/YokaieSportGG" target="_blank"><strong>@YokaieSportGG</strong></a></p>
+        <p>Instagram: <a href="https://www.instagram.com/yokai.esports" target="_blank"><strong>@yokai.esports</strong></a></p>
+        <p>Youtube: <a href="https://www.youtube.com/channel/UCwBzziUpxQRIcmd0tzeey5A" target="_blank"><strong>@YokaieSport</strong></a></p>
+        <p>Twitch: <a href="https://www.twitch.tv/yokaiesportsgg" target="_blank"><strong>@YokaieSportsGG</strong></a></p>
+      </div>
+      <div class="extra-right">
+        <h2>Policies</h2>
+        <p><a href="contactPage.html"><strong>Contact Us</strong></a></p>
+        <p><a href="termsOfServices.html" target="_blank"><strong>Terms of Service</strong></a></p>
+        <p><a href="privacyPolicy.html" target="_blank"><strong>Privacy Policy</strong></a></p>
+        <p><a href="feedBack.html" target="_blank"><strong>Feedback</strong></a></p>
+        <p><a href="jobs.html" target="_blank"><strong>Jobs</strong></a></p>
+        <p><a href="help.html" target="_blank"><strong>Help</strong></a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Yokai eSports — Designed by Thomas Peters
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const menuBox = document.getElementById('menuBox');
+    const logo = document.querySelector('.logo');
+    const menuLogoPlaceholder = document.querySelector('.menu-logo-placeholder');
+    const headerLeft = document.querySelector('.left-header');
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    const contactForm = document.querySelector('form');
+
+    // Load theme preference
+    if (localStorage.getItem('theme') === 'dark') body.classList.add('dark-mode');
+
+    // Theme toggle
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+    });
+
+    // Menu toggle animation
+    function moveLogoToMenu() {
+      const headerRect = logo.getBoundingClientRect();
+      const menuRect = menuLogoPlaceholder.getBoundingClientRect();
+      const deltaX = menuRect.left + menuRect.width/2 - (headerRect.left + headerRect.width/2);
+      const deltaY = menuRect.top + menuRect.height/2 - (headerRect.top + headerRect.height/2);
+      logo.style.position = 'fixed';
+      logo.style.left = headerRect.left + 'px';
+      logo.style.top = headerRect.top + 'px';
+      logo.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+      logo.style.transition = 'transform 0.5s ease';
+      setTimeout(() => {
+        menuLogoPlaceholder.appendChild(logo);
+        logo.style.position = 'relative';
+        logo.style.left = '';
+        logo.style.top = '';
+        logo.style.transform = '';
+        logo.style.transition = '';
+      }, 500);
+    }
+
+    function moveLogoToHeader() {
+      const menuRect = logo.getBoundingClientRect();
+      const headerRect = headerLeft.getBoundingClientRect();
+      const deltaX = headerRect.left - menuRect.left;
+      const deltaY = headerRect.top - menuRect.top;
+      logo.style.position = 'fixed';
+      logo.style.left = menuRect.left + 'px';
+      logo.style.top = menuRect.top + 'px';
+      logo.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+      logo.style.transition = 'transform 0.5s ease';
+      setTimeout(() => {
+        headerLeft.prepend(logo);
+        logo.style.position = 'relative';
+        logo.style.left = '';
+        logo.style.top = '';
+        logo.style.transform = '';
+        logo.style.transition = '';
+      }, 500);
+    }
+
+    function openMenu() { moveLogoToMenu(); menuBox.classList.add('active'); }
+    function closeMenu() { moveLogoToHeader(); menuBox.classList.remove('active'); }
+
+    menuBtn.addEventListener('click', () => {
+      menuBox.classList.contains('active') ? closeMenu() : openMenu();
+    });
+
+    menuBox.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('click', e => {
+      if (menuBox.classList.contains('active') && !menuBox.contains(e.target) && !menuBtn.contains(e.target)) closeMenu();
+    });
+
+    // Fade-in animation for contact form
+    window.addEventListener('load', () => contactForm.classList.add('visible'));
+  </script>
+</body>
+</html>

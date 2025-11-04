@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Yokai eSports Staff — Meet the team behind the scenes of Yokai eSports." />
+  <meta name="theme-color" content="#b30000" />
+  <title>Yokai eSports | Staff</title>
+  <link rel="preload" as="image" href="images/staff_banner.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-color: F9F9F3;
+      --text-color: #222;
+      --header-bg: darkred;
+      --header-text: F9F9F3;
+      --hero-text-color: #ff1a1a;
+      --hero-overlay: rgba(0,0,0,0.6);
+      --team-border: #b30000;
+      --extra-bg: #b30000;
+      --extra-text: F9F9F3;
+      --footer-bg: #111;
+      --footer-text: #bbb;
+      --menu-bg: darkred;
+      --menu-text: F9F9F3;
+      --menu-hover-bg: rgba(255,255,255,0.1);
+      --menu-hover-text: #ffcccc;
+    }
+    html { scroll-behavior: smooth; }
+    body { margin:0; font-family:'Noto Sans JP',sans-serif; background-color:var(--bg-color); color:var(--text-color); overflow-x:hidden; transition: background-color 0.6s ease, color 0.6s ease; }
+    h1,h2,h3{ font-family:'Oswald',sans-serif; text-transform:uppercase; letter-spacing:2px; }
+    a{text-decoration:none; color:inherit; transition: color 0.6s ease; }
+
+    header { background-color:var(--header-bg); color:var(--header-text); display:flex; justify-content:space-between; align-items:center; padding:15px 40px; box-shadow:0 2px 10px rgba(0,0,0,0.1); position:relative; z-index:100; transition: background-color 0.6s ease, color 0.6s ease; }
+    .left-header { display:flex; align-items:center; gap:15px; }
+    .logo { font-size:32px; font-weight:bold; letter-spacing:4px; color:#e2e0e0; position:relative; z-index:115; text-decoration:none; }
+    .menu-button { font-size:28px; background:none; border:none; color:F9F9F3; cursor:pointer; transition:transform 0.2s; z-index:110; }
+    .menu-button:hover { transform:scale(1.2); }
+    nav ul { list-style:none; display:flex; gap:25px; margin:0; padding:0; }
+    nav ul li { transition:0.3s; }
+    nav ul li:hover { transform:scale(1.3); }
+    @media (max-width:900px){ nav ul{ display:none; } }
+
+    .menu-box { position:fixed; top:0; left:-250px; width:250px; height:100vh; background:var(--menu-bg); color:var(--menu-text); box-shadow:3px 0 15px rgba(0,0,0,0.3); display:flex; flex-direction:column; padding-top:20px; transition:left 0.6s cubic-bezier(0.68,-0.55,0.27,1.55), background-color 0.6s ease, color 0.6s ease; z-index:105; }
+    .menu-box.active{ left:0; }
+    .menu-logo-placeholder{ height:60px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+    .menu-box a{ padding:15px 20px; font-weight:600; border-bottom:1px solid rgba(255,255,255,0.2); color:var(--menu-text); transition: background 0.2s,color 0.2s; }
+    .menu-box a:hover{ background:var(--menu-hover-bg); color:var(--menu-hover-text); }
+
+    .hero { background-image:url("images/staff_banner.jpg"); background-size:cover; background-position:center; background-repeat:no-repeat; color:var(--hero-text-color); text-align:center; padding:140px 20px; position:relative; transition: background-color 0.6s ease; }
+    .hero::after { content:""; position:absolute; top:0; left:0; width:100%; height:100%; background-color:var(--hero-overlay); z-index:0; transition: background-color 0.6s ease; }
+    .hero-content{ position:relative; z-index:1; }
+    .hero h1{ font-size:60px; margin-bottom:10px; color:var(--hero-text-color); text-shadow:2px 2px 5px black; }
+    .hero p{ font-size:22px; max-width:600px; margin:auto; }
+
+    .teams{ text-align:center; padding:80px 20px; background-color:#f9f9f9; }
+    .teams h2{ color:#b30000; font-size:36px; margin-bottom:40px; }
+    .team-grid{ display:flex; justify-content:center; flex-wrap:wrap; gap:20px; }
+    .team-card{ background:F9F9F3; border:3px solid var(--team-border); border-radius:10px; width:250px; padding:20px; transition:0.6s ease,border-color 0.6s ease; opacity:0; transform:translateY(50px); text-align:center; }
+    .team-card.visible{ opacity:1; transform:translateY(0); }
+    .team-card:hover{ transform:translateY(-8px) scale(1.03); box-shadow:0 4px 15px rgba(0,0,0,0.1); }
+    .team-card img{ width:100%; border-radius:8px; margin-bottom:12px; }
+
+    #overwatch-about{ padding:80px 20px; max-width:800px; margin:auto; text-align:center; line-height:1.8; }
+
+    .extra{ background-color:var(--extra-bg); color:var(--extra-text); padding:60px 20px; }
+    .extra h2{ font-size:26px; margin-bottom:10px; }
+    .extra-columns{ display:flex; gap:20px; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; }
+    .extra-left{ flex:2 1 0; min-width:260px; }
+    .extra-right{ flex:1 1 0; min-width:220px; }
+    .extra a{ color:var(--extra-text); text-decoration:none; font-weight:bold; }
+
+    footer{ background:var(--footer-bg); color:var(--footer-text); text-align:center; padding:15px; font-size:14px; }
+
+    body.dark-mode{ --bg-color:#121212; --text-color:#e0e0e0; --header-bg:#1f1f1f; --header-text:#fff; --hero-text-color:#ff5555; --hero-overlay:rgba(0,0,0,0.7); --team-border:#ff5555; --extra-bg:#1f1f1f; --extra-text:#fff; --footer-bg:#000; --footer-text:#aaa; --menu-bg:#1f1f1f; --menu-text:#fff; --menu-hover-bg:rgba(255,255,255,0.1); --menu-hover-text:#ff9999; }
+
+    @media (max-width:900px){ nav ul{ display:none; } .hero h1{ font-size:40px; } .team-card{ width:90%; } .extra-columns{ flex-direction:column; } }
+  </style>
+</head>
+
+<body>
+  <header role="banner">
+    <div class="left-header">
+      <button class="menu-button" id="menuBtn" aria-label="Toggle menu">☰</button>
+      <a href="yokaiEsports.html" class="logo">YOKAI</a>
+    </div>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="#staff-team">Staff</a></li>
+        <li><a href="#overwatch-about">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <aside class="menu-box" id="menuBox" role="navigation" aria-label="Side menu">
+    <div class="menu-logo-placeholder"></div>
+    <a href="news.html">News</a>
+    <a href="partners.html">Partners</a>
+    <a href="content.html">Content</a>
+    <a href="teams.html">Teams</a>
+    <a href="shop.html">Shop</a>
+    <div id="themeToggle" class="theme-switch" aria-label="Toggle dark mode">
+      <div class="switch-thumb"></div>
+    </div>
+  </aside>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Meet Our Staff</h1>
+      <p>The people behind Yokai eSports’ success</p>
+    </div>
+  </section>
+
+  <section id="staff-team" class="teams">
+    <h2>Staff Members</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="images/staff1.jpg" alt="Thomas Peters">
+        <h3>Thomas Peters</h3>
+        <p>Founder & CEO</p>
+      </div>
+      <div class="team-card">
+        <img src="images/staff2.jpg" alt="Sakura Tanaka">
+        <h3>Sakura Tanaka</h3>
+        <p>Head of Marketing</p>
+      </div>
+      <div class="team-card">
+        <img src="images/staff3.jpg" alt="Kenji Ito">
+        <h3>Kenji Ito</h3>
+        <p>Team Manager</p>
+      </div>
+      <div class="team-card">
+        <img src="images/staff4.jpg" alt="Mika Suzuki">
+        <h3>Mika Suzuki</h3>
+        <p>Content Creator</p>
+      </div>
+      <div class="team-card">
+        <img src="images/staff5.jpg" alt="Ren Yamamoto">
+        <h3>Ren Yamamoto</h3>
+        <p>Coach</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="overwatch-about">
+    <h2>About Our Staff</h2>
+    <p>
+      Yokai eSports’ staff team is dedicated to ensuring every division runs smoothly. 
+      From management to content creation, each staff member brings expertise, creativity, 
+      and passion to elevate the organization to new heights.
+    </p>
+  </section>
+
+  <section class="extra">
+    <div class="extra-columns">
+      <div class="extra-left">
+        <h2>YOKAI</h2>
+        <p><a href="https://discord.gg/nNDV95nMwx" target="_blank"><strong>Discord</strong></a></p>
+        <p>Email: <strong>sxmikas@yokaiesports.com</strong></p>
+        <p>Twitter: <a href="https://x.com/YokaieSportGG" target="_blank"><strong>@YokaieSportGG</strong></a></p>
+        <p>Instagram: <a href="https://www.instagram.com/yokai.esports" target="_blank"><strong>@yokai.esports</strong></a></p>
+        <p>Youtube: <a href="https://www.youtube.com/channel/UCwBzziUpxQRIcmd0tzeey5A" target="_blank"><strong>@YokaieSport</strong></a></p>
+        <p>Twitch: <a href="https://www.twitch.tv/yokaiesportsgg" target="_blank"><strong>@YokaieSportsGG</strong></a></p>
+      </div>
+      <div class="extra-right">
+        <h2>Policies</h2>
+        <p><a href="contactPage.html"><strong>Contact Us</strong></a></p>
+        <p><a href="termsOfServices.html" target="_blank"><strong>Terms of Service</strong></a></p>
+        <p><a href="privacyPolicy.html" target="_blank"><strong>Privacy Policy</strong></a></p>
+        <p><a href="feedBack.html" target="_blank"><strong>Feedback</strong></a></p>
+        <p><a href="help.html" target="_blank"><strong>Help</strong></a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Copyright © 2025 Yokai eSports — Designed by Thomas Peters
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const menuBox = document.getElementById('menuBox');
+    const logo = document.querySelector('.logo');
+    const menuLogoPlaceholder = document.querySelector('.menu-logo-placeholder');
+    const headerLeft = document.querySelector('.left-header');
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+
+    if(localStorage.getItem('theme')==='dark') body.classList.add('dark-mode');
+
+    function moveLogoToMenu(){ const headerRect=logo.getBoundingClientRect(); const menuRect=menuLogoPlaceholder.getBoundingClientRect(); const deltaX=menuRect.left+menuRect.width/2-(headerRect.left+headerRect.width/2); const deltaY=menuRect.top+menuRect.height/2-(headerRect.top+headerRect.height/2); logo.style.position='fixed'; logo.style.left=headerRect.left+'px'; logo.style.top=headerRect.top+'px'; logo.style.transform=`translate(${deltaX}px, ${deltaY}px)`; logo.style.transition='transform 0.5s ease'; setTimeout(()=>{ menuLogoPlaceholder.appendChild(logo); logo.style.position='relative'; logo.style.left=''; logo.style.top=''; logo.style.transform=''; logo.style.transition=''; },500); }
+    function moveLogoToHeader(){ const menuRect=logo.getBoundingClientRect(); const headerRect=headerLeft.getBoundingClientRect(); const deltaX=headerRect.left-menuRect.left; const deltaY=headerRect.top-menuRect.top; logo.style.position='fixed'; logo.style.left=menuRect.left+'px'; logo.style.top=menuRect.top+'px'; logo.style.transform=`translate(${deltaX}px, ${deltaY}px)`; logo.style.transition='transform 0.5s ease'; setTimeout(()=>{ headerLeft.prepend(logo); logo.style.position='relative'; logo.style.left=''; logo.style.top=''; logo.style.transform=''; logo.style.transition=''; },500); }
+    function openMenu(){ moveLogoToMenu(); document.body.style.overflow='hidden'; setTimeout(()=>menuBox.classList.add('active'),100); }
+    function closeMenu(){ moveLogoToHeader(); document.body.style.overflow=''; setTimeout(()=>menuBox.classList.remove('active'),300); }
+    menuBtn.addEventListener('click', ()=>menuBox.classList.contains('active')?closeMenu():openMenu());
+    menuBox.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
+    document.addEventListener('click', e=>{ if(menuBox.classList.contains('active')&&!menuBox.contains(e.target)&&!menuBtn.contains(e.target)) closeMenu(); });
+
+    const observer=new IntersectionObserver((entries, observer)=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); }, {threshold:0.2});
+    document.querySelectorAll('.team-card').forEach(card=>observer.observe(card));
+
+    themeToggle.addEventListener('click', ()=>{ body.classList.toggle('dark-mode'); localStorage.setItem('theme', body.classList.contains('dark-mode')?'dark':'light'); });
+  </script>
+</body>
+</html>

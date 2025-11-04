@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Yokai eSports — Available Jobs & Opportunities" />
+<meta name="theme-color" content="#b30000" />
+<title>Yokai eSports | Jobs</title>
+<link rel="preload" as="image" href="images/jobs_banner.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-color: F9F9F3; --text-color: #222;
+  --header-bg: darkred; --header-text: F9F9F3;
+  --hero-text-color: #ff1a1a; --hero-overlay: rgba(0,0,0,0.6);
+  --team-border: #b30000; --extra-bg: #b30000; --extra-text: F9F9F3;
+  --footer-bg: #111; --footer-text: #bbb;
+  --menu-bg: darkred; --menu-text: F9F9F3;
+  --menu-hover-bg: rgba(255,255,255,0.1); --menu-hover-text: #ffcccc;
+}
+html { scroll-behavior: smooth; }
+body { margin:0; font-family:'Noto Sans JP',sans-serif; background-color:var(--bg-color); color:var(--text-color); overflow-x:hidden; transition: background-color 0.6s, color 0.6s;}
+h1,h2,h3 { font-family:'Oswald',sans-serif; text-transform:uppercase; letter-spacing:2px; }
+a { text-decoration:none; color:inherit; transition: color 0.6s; }
+
+/* Header */
+header { background-color: var(--header-bg); color: var(--header-text); display:flex; justify-content:space-between; align-items:center; padding:15px 40px; box-shadow:0 2px 10px rgba(0,0,0,0.1); position:relative; z-index:100; transition:background-color 0.6s,color 0.6s;}
+.left-header { display:flex; align-items:center; gap:15px; }
+.logo { font-size:32px; font-weight:bold; letter-spacing:4px; color:#e2e0e0; position:relative; z-index:115; text-decoration:none; }
+.menu-button { font-size:28px; background:none; border:none; color:F9F9F3; cursor:pointer; transition: transform 0.2s; z-index:110; }
+.menu-button:hover { transform:scale(1.2); }
+nav ul { list-style:none; display:flex; gap:25px; margin:0; padding:0; }
+nav ul li:hover { transform:scale(1.3); }
+@media(max-width:900px){nav ul{display:none;}}
+
+/* Side Menu */
+.menu-box { position:fixed; top:0; left:-250px; width:250px; height:100vh; background:var(--menu-bg); color:var(--menu-text); display:flex; flex-direction:column; padding-top:20px; box-shadow:3px 0 15px rgba(0,0,0,0.3); transition:left 0.6s cubic-bezier(0.68,-0.55,0.27,1.55), background-color 0.6s, color 0.6s; z-index:105; }
+.menu-box.active{left:0;}
+.menu-logo-placeholder{height:60px; display:flex; align-items:center; justify-content:center; overflow:hidden;}
+.menu-box a{padding:15px 20px; font-weight:600; border-bottom:1px solid rgba(255,255,255,0.2); color:var(--menu-text); transition:background 0.2s,color 0.2s;}
+.menu-box a:hover{background:var(--menu-hover-bg); color:var(--menu-hover-text);}
+
+/* Hero */
+.hero{background-image:url("images/jobs_banner.jpg"); background-size:cover; background-position:center; background-repeat:no-repeat; color:var(--hero-text-color); text-align:center; padding:140px 20px; position:relative;}
+.hero::after{content:""; position:absolute; top:0; left:0; width:100%; height:100%; background-color:var(--hero-overlay); z-index:0;}
+.hero-content{position:relative; z-index:1;}
+.hero h1{font-size:60px; margin-bottom:10px; color:var(--hero-text-color); text-shadow:2px 2px 5px black;}
+.hero p{font-size:22px; max-width:600px; margin:auto;}
+
+/* Jobs Grid */
+.jobs-section{padding:80px 20px; text-align:center;}
+.jobs-section h2{color:#b30000; font-size:36px; margin-bottom:40px;}
+.jobs-grid{display:flex; justify-content:center; flex-wrap:wrap; gap:20px;}
+.job-card{background:F9F9F3; border:3px solid var(--team-border); border-radius:10px; width:250px; padding:20px; transition:0.6s, border-color 0.6s; opacity:0; transform:translateY(50px); cursor:pointer;}
+.job-card.visible{opacity:1; transform:translateY(0);}
+.job-card:hover{transform:translateY(-8px) scale(1.03); box-shadow:0 4px 15px rgba(0,0,0,0.1);}
+.job-card h3{margin:10px 0; color:#b30000;}
+.job-card p{font-size:16px; color:#333;}
+
+/* Extra/Footer */
+.extra{background-color:var(--extra-bg); color:var(--extra-text); padding:60px 20px;}
+.extra h2{font-size:26px; margin-bottom:10px;}
+.extra-columns{display:flex; gap:20px; justify-content:space-between; align-items:flex-start; flex-wrap:wrap;}
+.extra-left{flex:2 1 0; min-width:260px;}
+.extra-right{flex:1 1 0; min-width:220px;}
+.extra a{color:var(--extra-text); text-decoration:none; font-weight:bold;}
+footer{background:var(--footer-bg); color:var(--footer-text); text-align:center; padding:15px; font-size:14px;}
+
+/* Dark Mode */
+body.dark-mode{--bg-color:#121212; --text-color:#e0e0e0; --header-bg:#1f1f1f; --header-text:#fff; --hero-text-color:#ff5555; --hero-overlay:rgba(0,0,0,0.7); --team-border:#ff5555; --extra-bg:#1f1f1f; --extra-text:#fff; --footer-bg:#000; --footer-text:#aaa; --menu-bg:#1f1f1f; --menu-text:#fff; --menu-hover-bg:rgba(255,255,255,0.1); --menu-hover-text:#ff9999;}
+@media(max-width:900px){.job-card{width:90%;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="left-header">
+    <button class="menu-button" id="menuBtn" aria-label="Toggle menu">☰</button>
+    <a href="yokaiEsports.html" class="logo">YOKAI</a>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#jobs-section">Available Jobs</a></li>
+      <li><a href="#extra">Extra</a></li>
+    </ul>
+  </nav>
+</header>
+
+<aside class="menu-box" id="menuBox">
+  <div class="menu-logo-placeholder"></div>
+  <a href="news.html">News</a>
+  <a href="partners.html">Partners</a>
+  <a href="content.html">Content</a>
+  <a href="teams.html">Teams</a>
+  <a href="shop.html">Shop</a>
+  <div id="themeToggle" class="theme-switch" aria-label="Toggle dark mode"><div class="switch-thumb"></div></div>
+</aside>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Join Our Team</h1>
+    <p>Check out current opportunities and apply today!</p>
+  </div>
+</section>
+
+<section id="jobs-section" class="jobs-section">
+  <h2>Available Positions</h2>
+  <div class="jobs-grid">
+    <div class="job-card" data-role="Graphic Designer"><h3>Graphic Designer</h3><p>Create visuals for the team.</p></div>
+    <div class="job-card" data-role="Social Media Manager"><h3>Social Media Manager</h3><p>Manage our social platforms.</p></div>
+    <div class="job-card" data-role="Video Editor"><h3>Video Editor</h3><p>Edit content for YouTube/Twitch.</p></div>
+    <div class="job-card" data-role="Community Manager"><h3>Community Manager</h3><p>Engage with fans and players.</p></div>
+    <div class="job-card" data-role="Event Coordinator"><h3>Event Coordinator</h3><p>Organize tournaments and events.</p></div>
+  </div>
+</section>
+
+<section class="extra" id="extra">
+  <div class="extra-columns">
+    <div class="extra-left">
+      <h2>YOKAI</h2>
+      <p><a href="https://discord.gg/nNDV95nMwx" target="_blank"><strong>Discord</strong></a></p>
+      <p>Email: <strong>sxmikas@yokaiesports.com</strong></p>
+      <p>Twitter: <a href="https://x.com/YokaieSportGG" target="_blank"><strong>@YokaieSportGG</strong></a></p>
+    </div>
+    <div class="extra-right">
+      <h2>Policies</h2>
+      <p><a href="contactPage.html"><strong>Contact Us</strong></a></p>
+      <p><a href="termsOfServices.html" target="_blank"><strong>Terms of Service</strong></a></p>
+      <p><a href="privacyPolicy.html" target="_blank"><strong>Privacy Policy</strong></a></p>
+    </div>
+  </div>
+</section>
+
+<footer>Copyright © 2025 Yokai eSports — Designed by Thomas Peters</footer>
+
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const menuBox = document.getElementById('menuBox');
+const logo = document.querySelector('.logo');
+const menuLogoPlaceholder = document.querySelector('.menu-logo-placeholder');
+const headerLeft = document.querySelector('.left-header');
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+
+// Dark mode
+if(localStorage.getItem('theme')==='dark') body.classList.add('dark-mode');
+
+// Logo animation functions
+function moveLogoToMenu(){const h=logo.getBoundingClientRect(); const m=menuLogoPlaceholder.getBoundingClientRect(); logo.style.position='fixed'; logo.style.left=h.left+'px'; logo.style.top=h.top+'px'; logo.style.transform=`translate(${m.left+h.width/2-h.left-h.width/2}px,${m.top+h.height/2-h.top-h.height/2}px)`; logo.style.transition='transform 0.5s'; setTimeout(()=>{menuLogoPlaceholder.appendChild(logo); logo.style.position='relative'; logo.style.left=''; logo.style.top=''; logo.style.transform=''; logo.style.transition='';},500);}
+function moveLogoToHeader(){const m=logo.getBoundingClientRect(); const h=headerLeft.getBoundingClientRect(); logo.style.position='fixed'; logo.style.left=m.left+'px'; logo.style.top=m.top+'px'; logo.style.transform=`translate(${h.left-m.left}px,${h.top-m.top}px)`; logo.style.transition='transform 0.5s'; setTimeout(()=>{headerLeft.prepend(logo); logo.style.position='relative'; logo.style.left=''; logo.style.top=''; logo.style.transform=''; logo.style.transition='';},500);}
+function openMenu(){moveLogoToMenu(); body.style.overflow='hidden'; setTimeout(()=>menuBox.classList.add('active'),100);}
+function closeMenu(){moveLogoToHeader(); body.style.overflow=''; setTimeout(()=>menuBox.classList.remove('active'),300);}
+menuBtn.addEventListener('click',()=>menuBox.classList.contains('active')?closeMenu():openMenu());
+menuBox.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
+document.addEventListener('click',e=>{if(menuBox.classList.contains('active')&&!menuBox.contains(e.target)&&!menuBtn.contains(e.target)) closeMenu();});
+themeToggle.addEventListener('click',()=>{body.classList.toggle('dark-mode'); localStorage.setItem('theme',body.classList.contains('dark-mode')?'dark':'light');});
+
+// Animate job cards
+const observer = new IntersectionObserver((entries,observer)=>{
+  entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible'); observer.unobserve(entry.target);}});
+},{threshold:0.2});
+document.querySelectorAll('.job-card').forEach(card=>observer.observe(card));
+
+// Navigate to application page
+document.querySelectorAll('.job-card').forEach(card=>{
+  card.addEventListener('click', ()=>{
+    const role = encodeURIComponent(card.dataset.role);
+    window.location.href = `jobApplication.html?job=${role}`;
+  });
+});
+</script>
+</body>
+</html>

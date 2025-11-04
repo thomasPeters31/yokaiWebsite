@@ -1,0 +1,199 @@
+<script>
+  // ---------- Existing elements ----------
+  const menuBtn = document.getElementById('menuBtn');
+  const menuBox = document.getElementById('menuBox');
+  const headerLogo = document.getElementById('headerLogo');
+  const menuLogoPlaceholder = document.getElementById('menuLogoPlaceholder');
+  const themeToggle = document.getElementById('themeToggle');
+  const body = document.body;
+
+  // Old news state
+  const oldNews = document.getElementById('oldNews');
+  const toggleBtn = document.getElementById('toggleOldNews');
+  let manualOldNewsState = false;
+
+  // ---------- Logo animation & menu ----------
+  function moveLogo(toMenu=true) {
+    const headerRect = headerLogo.getBoundingClientRect();
+    const menuRect = menuLogoPlaceholder.getBoundingClientRect();
+    let deltaX, deltaY;
+
+    if(toMenu){
+      deltaX = menuRect.left + menuRect.width/2 - (headerRect.left + headerRect.width/2);
+      deltaY = menuRect.top + menuRect.height/2 - (headerRect.top + headerRect.height/2);
+    } else {
+      const headerLeft = document.querySelector('.left-header').getBoundingClientRect();
+      deltaX = headerLeft.left - headerRect.left;
+      deltaY = headerLeft.top - headerRect.top;
+    }
+
+    headerLogo.style.position = 'fixed';
+    headerLogo.style.left = headerRect.left + 'px';
+    headerLogo.style.top = headerRect.top + 'px';
+    headerLogo.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+    headerLogo.style.transition = 'transform 0.5s cubic-bezier(0.68,-0.55,0.27,1.55)';
+
+    setTimeout(() => {
+      if(toMenu) menuLogoPlaceholder.appendChild(headerLogo);
+      else document.querySelector('.left-header').prepend(headerLogo);
+
+      headerLogo.style.position = 'relative';
+      headerLogo.style.left = '';
+      headerLogo.style.top = '';
+      headerLogo.style.transform = '';
+      headerLogo.style.transition = '';
+    }, 500);
+  }
+
+  function openMenu() { moveLogo(true); menuBox.classList.add('active'); body.style.overflow='hidden'; }
+  function closeMenu() { moveLogo(false); menuBox.classList.remove('active'); body.style.overflow=''; }
+
+  menuBtn.addEventListener('click', () => menuBox.classList.contains('active') ? closeMenu() : openMenu());
+  document.addEventListener('click', e => { if(menuBox.classList.contains('active') && !menuBox.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
+
+  // ---------- Toggle older news ----------
+  function setOldNewsVisibility(visible) {
+    oldNews.style.display = visible ? 'flex' : 'none';
+    toggleBtn.textContent = visible ? 'Hide Older News' : 'Show Older News';
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    manualOldNewsState = !manualOldNewsState;
+    setOldNewsVisibility(manualOldNewsState);
+  });
+
+  // ---------- Reveal animation ----------
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.18 });
+
+  function observeCards() {
+    document.querySelectorAll('.news-card').forEach(card => observer.observe(card));
+  }
+
+  // ---------- Dark mode ----------
+  if(localStorage.getItem('theme') === 'dark') body.classList.add('dark-mode');
+  themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+  });
+
+  // ---------- Search ----------
+  const searchBtn = document.getElementById('searchBtn');
+  const searchInput = document.getElementById('searchInput');
+  const closeSearch = document.getElementById('closeSearch');
+
+  searchBtn.addEventListener('click', () => {
+    searchInput.classList.toggle('active');
+    if (searchInput.classList.contains('active')) setTimeout(() => searchInput.focus(), 300);
+  });
+
+  closeSearch.addEventListener('click', () => {
+    searchInput.value = '';
+    searchInput.classList.remove('active');
+    filterNews();
+  });
+
+  document.addEventListener('click', (e) => {
+    const isClickInside = searchInput.contains(e.target) || searchBtn.contains(e.target) || closeSearch.contains(e.target);
+    if (!isClickInside) searchInput.classList.remove('active');
+  });
+
+  function escapeRegExp(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function highlightMatch(text, query) {
+    if (!query) return text;
+    const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+    return text.replace(regex, '<span class="highlight">$1</span>');
+  }
+
+  // ---------- Filter function that works for dynamic tweets too ----------
+  function filterNews() {
+    const rawQuery = searchInput.value.trim();
+    const qLower = rawQuery.toLowerCase();
+    const allNews = Array.from(document.querySelectorAll('.news-card'));
+    const oldNewsCards = Array.from(oldNews.children);
+
+    if (qLower === '') {
+      allNews.forEach(card => {
+        card.style.display = 'block';
+        card.classList.remove('fade-in');
+        const h = card.querySelector('h3'); if(h) h.innerHTML = h.textContent;
+        const p = card.querySelector('p'); if(p) p.innerHTML = p.textContent;
+      });
+      setOldNewsVisibility(manualOldNewsState);
+      return;
+    }
+
+    let anyOldMatch = false;
+
+    allNews.forEach(card => {
+      const titleElem = card.querySelector('h3');
+      const descElem = card.querySelector('p');
+      const titleText = titleElem ? titleElem.textContent.toLowerCase() : '';
+      const descText = descElem ? descElem.textContent.toLowerCase() : '';
+
+      if (titleText.includes(qLower) || descText.includes(qLower)) {
+        card.style.display = 'block';
+        card.classList.add('fade-in');
+        if (titleElem) titleElem.innerHTML = highlightMatch(titleElem.textContent, rawQuery);
+        if (descElem) descElem.innerHTML = highlightMatch(descElem.textContent, rawQuery);
+      } else {
+        card.style.display = 'none';
+        card.classList.remove('fade-in');
+        if (titleElem) titleElem.innerHTML = titleElem.textContent;
+        if (descElem) descElem.innerHTML = descElem.textContent;
+      }
+    });
+
+    // Check if any old news is visible
+    anyOldMatch = oldNewsCards.some(card => card.style.display === 'block');
+    if (anyOldMatch) setOldNewsVisibility(true);
+    else setOldNewsVisibility(manualOldNewsState);
+  }
+
+  searchInput.addEventListener('input', filterNews);
+
+  // ---------- Initialize ----------
+  setOldNewsVisibility(false);
+  document.querySelectorAll('.news-card').forEach(card => {
+    if (card.getBoundingClientRect().top < window.innerHeight) card.classList.add('visible');
+  });
+  observeCards();
+
+  // ---------- Load tweets dynamically ----------
+  async function loadTweets() {
+    try {
+      const res = await fetch('/api/tweets');
+      const data = await res.json();
+
+      const latestNewsGrid = document.getElementById('latestNews');
+      latestNewsGrid.innerHTML = ''; // Clear placeholder cards
+
+      data.tweets.forEach(tweet => {
+        const card = document.createElement('div');
+        card.classList.add('news-card', 'visible');
+        card.innerHTML = `
+          <h3>${tweet.text}</h3>
+          <p><a href="https://x.com/${tweet.username}/status/${tweet.id}" target="_blank" style="color:var(--card-border);">View on X →</a></p>
+        `;
+        latestNewsGrid.appendChild(card);
+      });
+
+      observeCards(); // ensure IntersectionObserver works on new cards
+      filterNews(); // immediately apply current search filter to tweets
+
+    } catch (err) {
+      console.error('Error loading tweets:', err);
+      const latestNewsGrid = document.getElementById('latestNews');
+      latestNewsGrid.innerHTML = '<p style="text-align:center;">Unable to load tweets right now.</p>';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', loadTweets);
+
+</script>
