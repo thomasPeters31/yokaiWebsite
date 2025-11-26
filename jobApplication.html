@@ -4,11 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Yokai eSports Job Application" />
-<meta name="theme-color" content="#b30000" />
+<meta name="theme-color" content="#ff2e3c" />
 <title>Yokai eSports | Apply</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
 <style>
-:root {--bg-color:#f9f9f3; --text-color:#222; --header-bg:darkred; --header-text:#f9f9f3; --hero-text-color:#ff1a1a; --hero-overlay:rgba(0,0,0,0.6); --extra-bg:#b30000; --extra-text:#f9f9f3; --footer-bg:#111; --footer-text:#bbb; --menu-bg:darkred; --menu-text:#f9f9f3; --menu-hover-bg:rgba(255,255,255,0.1); --menu-hover-text:#ffcccc;}
+:root {--bg-color: #0c0c10; --text-color: #eef0f6; --header-bg: #0c0c10; --header-text: #eef0f6; --hero-text-color: #ff2e3c; --hero-overlay: rgba(12,12,16,0.72); --extra-bg: #0c0c10; --extra-text: #eef0f6; --footer-bg: #0c0c10; --footer-text: #b4b7c9; --menu-bg: #0c0c10; --menu-text: #eef0f6; --menu-hover-bg: rgba(255,46,60,0.12); --menu-hover-text: #ff2e3c;}
 html{scroll-behavior:smooth;} body{margin:0; font-family:'Noto Sans JP',sans-serif; background-color:var(--bg-color); color:var(--text-color); overflow-x:hidden; transition:background-color 0.6s, color 0.6s;}
 h1,h2,h3{font-family:'Oswald',sans-serif; text-transform:uppercase; letter-spacing:2px;} a{text-decoration:none; color:inherit; transition:color 0.6s;}
 
@@ -16,7 +17,7 @@ h1,h2,h3{font-family:'Oswald',sans-serif; text-transform:uppercase; letter-spaci
 header{background-color:var(--header-bg); color:var(--header-text); display:flex; justify-content:space-between; align-items:center; padding:15px 40px; box-shadow:0 2px 10px rgba(0,0,0,0.1); position:relative; z-index:100; transition:background-color 0.6s,color 0.6s;}
 .left-header{display:flex; align-items:center; gap:15px;}
 .logo{font-size:32px; font-weight:bold; letter-spacing:4px; color:#e2e0e0; position:relative; z-index:115; text-decoration:none;}
-.menu-button{font-size:28px; background:none; border:none; color:#f9f9f3; cursor:pointer; transition: transform 0.2s; z-index:110;}
+.menu-button{font-size:28px; background:none; border:none; color:#eef0f6; cursor:pointer; transition: transform 0.2s; z-index:110;}
 .menu-button:hover{transform:scale(1.2);}
 nav ul{list-style:none; display:flex; gap:25px; margin:0; padding:0;}
 @media(max-width:900px){nav ul{display:none;}}
@@ -38,10 +39,10 @@ nav ul{list-style:none; display:flex; gap:25px; margin:0; padding:0;}
 /* Application form */
 .application-section{padding:80px 20px; max-width:600px; margin:auto; background:#f9f9f9; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.1); opacity:0; transform:translateY(50px); transition:opacity 0.6s ease, transform 0.6s ease;}
 .application-section.visible{opacity:1; transform:translateY(0);}
-.application-section h2{margin-bottom:20px; color:#b30000;}
+.application-section h2{margin-bottom:20px; color:#ff2e3c;}
 .application-section form{display:flex; flex-direction:column; gap:15px;}
 .application-section input, .application-section button{padding:10px; font-size:16px; border-radius:6px; border:1px solid #ccc;}
-.application-section button{background:#b30000; color:#f9f9f3; font-weight:bold; cursor:pointer; transition:background 0.3s;}
+.application-section button{background:#ff2e3c; color:#eef0f6; font-weight:bold; cursor:pointer; transition:background 0.3s;}
 .application-section button:hover{background:darkred;}
 
 /* Extra/Footer */
@@ -54,7 +55,7 @@ nav ul{list-style:none; display:flex; gap:25px; margin:0; padding:0;}
 footer{background:var(--footer-bg); color:var(--footer-text); text-align:center; padding:15px; font-size:14px;}
 
 /* Dark Mode */
-body.dark-mode{--bg-color:#121212; --text-color:#e0e0e0; --header-bg:#1f1f1f; --header-text:#fff; --hero-text-color:#ff5555; --hero-overlay:rgba(0,0,0,0.7); --extra-bg:#1f1f1f; --extra-text:#fff; --footer-bg:#000; --footer-text:#aaa; --menu-bg:#1f1f1f; --menu-text:#fff; --menu-hover-bg:rgba(255,255,255,0.1); --menu-hover-text:#ff9999;}
+body.dark-mode{ --bg-color:#0c0c10; --text-color:#eef0f6; --header-bg:#0c0c10; --header-text:#eef0f6; --hero-text-color:#ff2e3c; --hero-overlay:rgba(12,12,16,0.72); --team-border:#ff2e3c; --card-border:#ff2e3c; --extra-bg:#0c0c10; --extra-text:#eef0f6; --footer-bg:#0c0c10; --footer-text:#b4b7c9; --menu-bg:#0c0c10; --menu-text:#eef0f6; --menu-hover-bg:rgba(255,46,60,0.12); --menu-hover-text:#ff2e3c; }
 @media(max-width:900px){.hero h1{font-size:40px;} .application-section{width:90%;} .extra-columns{flex-direction:column;}}
 </style>
 </head>

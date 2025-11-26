@@ -4,29 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Yokai eSports Valorant Division — Precision, Strategy, and Competitive Spirit." />
-  <meta name="theme-color" content="#b30000" />
+  <meta name="theme-color" content="#ff2e3c" />
   <title>Yokai eSports | Valorant</title>
   <link rel="preload" as="image" href="images/valorant_banner.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
 
   <style>
     /* === Copy all styles from CS2 page === */
     :root {
-      --bg-color: #f9f9f3;
-      --text-color: #222;
-      --header-bg: darkred;
-      --header-text: #f9f9f3;
-      --hero-text-color: #ff1a1a;
-      --hero-overlay: rgba(0,0,0,0.6);
-      --team-border: #b30000;
-      --extra-bg: #b30000;
-      --extra-text: #f9f9f3;
-      --footer-bg: #111;
-      --footer-text: #bbb;
-      --menu-bg: darkred;
-      --menu-text: #f9f9f3;
-      --menu-hover-bg: rgba(255,255,255,0.1);
-      --menu-hover-text: #ffcccc;
+      --bg-color: #0c0c10;
+      --text-color: #eef0f6;
+      --header-bg: #0c0c10;
+      --header-text: #eef0f6;
+      --hero-text-color: #ff2e3c;
+      --hero-overlay: rgba(12,12,16,0.72);
+      --team-border: #ff2e3c;
+      --extra-bg: #0c0c10;
+      --extra-text: #eef0f6;
+      --footer-bg: #0c0c10;
+      --footer-text: #b4b7c9;
+      --menu-bg: #0c0c10;
+      --menu-text: #eef0f6;
+      --menu-hover-bg: rgba(255,46,60,0.12);
+      --menu-hover-text: #ff2e3c;
     }
     html { scroll-behavior: smooth; }
     body { margin:0; font-family:'Noto Sans JP',sans-serif; background-color:var(--bg-color); color:var(--text-color); overflow-x:hidden; transition: background-color 0.6s ease, color 0.6s ease; }
@@ -37,7 +38,7 @@
     header { background-color:var(--header-bg); color:var(--header-text); display:flex; justify-content:space-between; align-items:center; padding:15px 40px; box-shadow:0 2px 10px rgba(0,0,0,0.1); position:relative; z-index:100; transition: background-color 0.6s ease, color 0.6s ease; }
     .left-header { display:flex; align-items:center; gap:15px; }
     .logo { font-size:32px; font-weight:bold; letter-spacing:4px; color:#e2e0e0; position:relative; z-index:115; text-decoration:none; }
-    .menu-button { font-size:28px; background:none; border:none; color:#f9f9f3; cursor:pointer; transition:transform 0.2s; z-index:110; }
+    .menu-button { font-size:28px; background:none; border:none; color:#eef0f6; cursor:pointer; transition:transform 0.2s; z-index:110; }
     .menu-button:hover { transform:scale(1.2); }
     nav ul { list-style:none; display:flex; gap:25px; margin:0; padding:0; }
     nav ul li { transition:0.3s; }
@@ -60,9 +61,9 @@
 
     /* === Teams === */
     .teams{ text-align:center; padding:80px 20px; background-color:#f9f9f9; }
-    .teams h2{ color:#b30000; font-size:36px; margin-bottom:40px; }
+    .teams h2{ color:#ff2e3c; font-size:36px; margin-bottom:40px; }
     .team-grid{ display:flex; justify-content:center; flex-wrap:wrap; gap:20px; }
-    .team-card{ background:#f9f9f3; border:3px solid var(--team-border); border-radius:10px; width:250px; padding:20px; transition:0.6s ease,border-color 0.6s ease; opacity:0; transform:translateY(50px); text-align:center; }
+    .team-card{ background: var(--panel); border:3px solid var(--team-border); border-radius:10px; width:250px; padding:20px; transition:0.6s ease,border-color 0.6s ease; opacity:0; transform:translateY(50px); text-align:center; }
     .team-card.visible{ opacity:1; transform:translateY(0); }
     .team-card:hover{ transform:translateY(-8px) scale(1.03); box-shadow:0 4px 15px rgba(0,0,0,0.1); }
     .team-card img{ width:100%; border-radius:8px; margin-bottom:12px; }
@@ -91,7 +92,7 @@
     footer{ background:var(--footer-bg); color:var(--footer-text); text-align:center; padding:15px; font-size:14px; }
 
     /* === Dark Mode === */
-    body.dark-mode{ --bg-color:#121212; --text-color:#e0e0e0; --header-bg:#1f1f1f; --header-text:#fff; --hero-text-color:#ff5555; --hero-overlay:rgba(0,0,0,0.7); --team-border:#ff5555; --extra-bg:#1f1f1f; --extra-text:#fff; --footer-bg:#000; --footer-text:#aaa; --menu-bg:#1f1f1f; --menu-text:#fff; --menu-hover-bg:rgba(255,255,255,0.1); --menu-hover-text:#ff9999; }
+    body.dark-mode{ --bg-color:#0c0c10; --text-color:#eef0f6; --header-bg:#0c0c10; --header-text:#eef0f6; --hero-text-color:#ff2e3c; --hero-overlay:rgba(12,12,16,0.72); --team-border:#ff2e3c; --card-border:#ff2e3c; --extra-bg:#0c0c10; --extra-text:#eef0f6; --footer-bg:#0c0c10; --footer-text:#b4b7c9; --menu-bg:#0c0c10; --menu-text:#eef0f6; --menu-hover-bg:rgba(255,46,60,0.12); --menu-hover-text:#ff2e3c; }
 
     @media (max-width:900px){ nav ul{ display:none; } .hero h1{ font-size:40px; } .team-card{ width:90%; } .extra-columns{ flex-direction:column; } }
   </style>
