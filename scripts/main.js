@@ -1,8 +1,6 @@
 (() => {
   const drawer = document.querySelector("[data-drawer]");
   const drawerToggle = document.querySelector("[data-drawer-toggle]");
-  const themeButtons = document.querySelectorAll("[data-theme-toggle]");
-  const body = document.body;
 
   // Drawer backdrop
   const backdrop = document.createElement("div");
@@ -20,28 +18,6 @@
   drawerToggle?.addEventListener("click", () => toggleDrawer());
   backdrop.addEventListener("click", () => toggleDrawer(false));
   drawer?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => toggleDrawer(false)));
-
-  // Theme handling
-  const applyTheme = (mode) => {
-    body.classList.remove("theme-light", "theme-dark");
-    if (mode === "light") body.classList.add("theme-light");
-    if (mode === "dark") body.classList.add("theme-dark");
-    localStorage.setItem("theme", mode);
-  };
-
-  const storedTheme = localStorage.getItem("theme");
-  if (storedTheme === "light" || storedTheme === "dark") {
-    applyTheme(storedTheme);
-  } else {
-    applyTheme(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-  }
-
-  themeButtons.forEach((btn) =>
-    btn.addEventListener("click", () => {
-      const next = body.classList.contains("theme-dark") ? "light" : "dark";
-      applyTheme(next);
-    })
-  );
 
   // Reveal on scroll
   const observer = new IntersectionObserver(

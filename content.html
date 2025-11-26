@@ -37,9 +37,7 @@
     <a href="content.html">Content</a>
     <a href="teams.html">Teams</a>
     <a href="shop.html">Shop</a>
-    <div id="themeToggle" class="theme-switch" aria-label="Toggle dark mode">
-      <div class="switch-thumb"></div>
-    </div>
+        </div>
   </aside>
 
   <!-- HERO -->
@@ -118,10 +116,9 @@
     const logo = document.querySelector('.logo');
     const menuLogoPlaceholder = document.querySelector('.menu-logo-placeholder');
     const headerLeft = document.querySelector('.left-header');
-    const themeToggle = document.getElementById('themeToggle');
-    const body = document.body;
+        const body = document.body;
 
-    if(localStorage.getItem('theme')==='dark') body.classList.add('dark-mode');
+    
 
     function moveLogoToMenu(){ const headerRect=logo.getBoundingClientRect(); const menuRect=menuLogoPlaceholder.getBoundingClientRect(); const deltaX=menuRect.left+menuRect.width/2-(headerRect.left+headerRect.width/2); const deltaY=menuRect.top+menuRect.height/2-(headerRect.top+headerRect.height/2); logo.style.position='fixed'; logo.style.left=headerRect.left+'px'; logo.style.top=headerRect.top+'px'; logo.style.transform=`translate(${deltaX}px, ${deltaY}px)`; logo.style.transition='transform 0.5s ease'; setTimeout(()=>{ menuLogoPlaceholder.appendChild(logo); logo.style.position='relative'; logo.style.left=''; logo.style.top=''; logo.style.transform=''; logo.style.transition=''; },500); }
     function moveLogoToHeader(){ const menuRect=logo.getBoundingClientRect(); const headerRect=headerLeft.getBoundingClientRect(); const deltaX=headerRect.left-menuRect.left; const deltaY=headerRect.top-menuRect.top; logo.style.position='fixed'; logo.style.left=menuRect.left+'px'; logo.style.top=menuRect.top+'px'; logo.style.transform=`translate(${deltaX}px, ${deltaY}px)`; logo.style.transition='transform 0.5s ease'; setTimeout(()=>{ headerLeft.prepend(logo); logo.style.position='relative'; logo.style.left=''; logo.style.top=''; logo.style.transform=''; logo.style.transition=''; },500); }
@@ -134,8 +131,7 @@
     const observer=new IntersectionObserver((entries, observer)=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); }, {threshold:0.2});
     document.querySelectorAll('.team-card').forEach(card=>observer.observe(card));
 
-    themeToggle.addEventListener('click', ()=>{ body.classList.toggle('dark-mode'); localStorage.setItem('theme', body.classList.contains('dark-mode')?'dark':'light'); });
-  </script>
+      </script>
   <script src="scripts/main.js"></script>
 </body>
 </html>

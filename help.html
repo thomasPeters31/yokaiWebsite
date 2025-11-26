@@ -30,9 +30,7 @@
     <a href="shop.html">Shop</a>
     <a href="terms.html">Terms of Service</a>
 
-    <div id="themeToggle" class="theme-switch" aria-label="Toggle dark mode">
-      <div class="switch-thumb"></div>
-    </div>
+        </div>
   </aside>
 
   <main class="faq-container">
@@ -99,10 +97,9 @@
     const menuBox = document.getElementById('menuBox');
     const logo = document.getElementById('logo');
     const menuLogoPlaceholder = document.getElementById('menuLogoPlaceholder');
-    const themeToggle = document.getElementById('themeToggle');
-    const body = document.body;
+        const body = document.body;
 
-    if (localStorage.getItem('theme') === 'dark') { body.classList.add('dark-mode'); }
+
 
     function moveLogoToMenu() {
       const headerRect = logo.getBoundingClientRect();
@@ -170,10 +167,7 @@
           !menuBtn.contains(e.target)) { closeMenu(); }
     });
 
-    themeToggle.addEventListener('click', () => {
-      body.classList.toggle('dark-mode');
-      localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
-    });
+              });
 
     // Accordion functionality
     const faqItems = document.querySelectorAll('.faq-item');

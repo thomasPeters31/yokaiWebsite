@@ -41,9 +41,7 @@
     <a href="shop.html">Shop</a>
 
     <!-- Dark/Light Mode Switch -->
-    <div id="themeToggle" class="theme-switch" aria-label="Toggle dark mode">
-      <div class="switch-thumb"></div>
-    </div>
+        </div>
   </aside>
 
   <!-- HERO -->
@@ -150,10 +148,9 @@
     const logo = document.querySelector('.logo');
     const menuLogoPlaceholder = document.querySelector('.menu-logo-placeholder');
     const headerLeft = document.querySelector('.left-header');
-    const themeToggle = document.getElementById('themeToggle');
-    const body = document.body;
+        const body = document.body;
 
-    if (localStorage.getItem('theme') === 'dark') body.classList.add('dark-mode');
+    
 
     function moveLogoToMenu() {
       const headerRect = logo.getBoundingClientRect();
@@ -200,10 +197,7 @@
     }, { threshold: 0.2 });
     document.querySelectorAll('.team-card').forEach(card=>observer.observe(card));
 
-    themeToggle.addEventListener('click', ()=>{
-      body.classList.toggle('dark-mode');
-      localStorage.setItem('theme', body.classList.contains('dark-mode')?'dark':'light');
-    });
+              });
   </script>
   <script src="scripts/main.js"></script>
 </body>

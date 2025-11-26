@@ -32,9 +32,7 @@
     <a href="terms.html">Terms of Service</a>
 
     <!-- Dark/Light Mode Switch -->
-    <div id="themeToggle" class="theme-switch" aria-label="Toggle dark mode">
-      <div class="switch-thumb"></div>
-    </div>
+        </div>
   </aside>
 
   <main class="privacy-container">
@@ -84,15 +82,7 @@
     const menuBox = document.getElementById('menuBox');
     const logo = document.getElementById('logo');
     const menuLogoPlaceholder = document.getElementById('menuLogoPlaceholder');
-    const themeToggle = document.getElementById('themeToggle');
-    const body = document.body;
-
-    // Persist Theme
-    if (localStorage.getItem('theme') === 'dark') {
-      body.classList.add('dark-mode');
-    }
-
-    function moveLogoToMenu() {
+        const body = document.body;function moveLogoToMenu() {
       const headerRect = logo.getBoundingClientRect();
       const menuRect = menuLogoPlaceholder.getBoundingClientRect();
       const deltaX = menuRect.left + menuRect.width/2 - (headerRect.left + headerRect.width/2);
@@ -100,7 +90,7 @@
       logo.style.position = 'fixed';
       logo.style.left = headerRect.left + 'px';
       logo.style.top = headerRect.top + 'px';
-      logo.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+      logo.style.transform = `translate(${deltaXpx, ${deltaYpx)`;
       logo.style.transition = 'transform 0.5s ease';
       setTimeout(() => {
         menuLogoPlaceholder.appendChild(logo);
@@ -109,9 +99,7 @@
         logo.style.top = '';
         logo.style.transform = '';
         logo.style.transition = '';
-      }, 500);
-    }
-
+      , 500);
     function moveLogoToHeader() {
       const menuRect = logo.getBoundingClientRect();
       const headerRect = document.querySelector('.header-left').getBoundingClientRect();
@@ -120,7 +108,7 @@
       logo.style.position = 'fixed';
       logo.style.left = menuRect.left + 'px';
       logo.style.top = menuRect.top + 'px';
-      logo.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+      logo.style.transform = `translate(${deltaXpx, ${deltaYpx)`;
       logo.style.transition = 'transform 0.5s ease';
       setTimeout(() => {
         document.querySelector('.header-left').prepend(logo);
@@ -129,39 +117,30 @@
         logo.style.top = '';
         logo.style.transform = '';
         logo.style.transition = '';
-      }, 500);
-    }
-
+      , 500);
     function openMenu() {
       moveLogoToMenu();
       document.body.style.overflow = 'hidden';
       menuBtn.classList.add('hidden');
       setTimeout(() => menuBox.classList.add('active'), 100);
-    }
-
     function closeMenu() {
       moveLogoToHeader();
       document.body.style.overflow = '';
       menuBtn.classList.remove('hidden');
       setTimeout(() => menuBox.classList.remove('active'), 300);
-    }
-
     menuBtn.addEventListener('click', () => {
-      if(menuBox.classList.contains('active')) { closeMenu(); } else { openMenu(); }
-    });
+      if(menuBox.classList.contains('active')) { closeMenu();  else { openMenu(); 
+    );
 
     menuBox.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
 
     document.addEventListener('click', (e) => {
       if (menuBox.classList.contains('active') &&
           !menuBox.contains(e.target) &&
-          !menuBtn.contains(e.target)) { closeMenu(); }
-    });
+          !menuBtn.contains(e.target)) { closeMenu(); 
+    );
 
-    themeToggle.addEventListener('click', () => {
-      body.classList.toggle('dark-mode');
-      localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
-    });
+              );
   </script>
   <script src="scripts/main.js"></script>
 </body>

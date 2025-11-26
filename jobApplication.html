@@ -31,8 +31,7 @@
   <a href="content.html">Content</a>
   <a href="teams.html">Teams</a>
   <a href="shop.html">Shop</a>
-  <div id="themeToggle" class="theme-switch" aria-label="Toggle dark mode"><div class="switch-thumb"></div></div>
-</aside>
+  </aside>
 
 <section class="hero">
   <div class="hero-content">
@@ -81,9 +80,8 @@ const menuBox = document.getElementById('menuBox');
 const logo = document.querySelector('.logo');
 const menuLogoPlaceholder = document.querySelector('.menu-logo-placeholder');
 const headerLeft = document.querySelector('.left-header');
-const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
-if(localStorage.getItem('theme')==='dark') body.classList.add('dark-mode');
+
 
 function moveLogoToMenu(){const h=logo.getBoundingClientRect(); const m=menuLogoPlaceholder.getBoundingClientRect(); logo.style.position='fixed'; logo.style.left=h.left+'px'; logo.style.top=h.top+'px'; logo.style.transform=`translate(${m.left+h.width/2-h.left-h.width/2}px,${m.top+h.height/2-h.top-h.height/2}px)`; logo.style.transition='transform 0.5s'; setTimeout(()=>{menuLogoPlaceholder.appendChild(logo); logo.style.position='relative'; logo.style.left=''; logo.style.top=''; logo.style.transform=''; logo.style.transition='';},500);}
 function moveLogoToHeader(){const m=logo.getBoundingClientRect(); const h=headerLeft.getBoundingClientRect(); logo.style.position='fixed'; logo.style.left=m.left+'px'; logo.style.top=m.top+'px'; logo.style.transform=`translate(${h.left-m.left}px,${h.top-m.top}px)`; logo.style.transition='transform 0.5s'; setTimeout(()=>{headerLeft.prepend(logo); logo.style.position='relative'; logo.style.left=''; logo.style.top=''; logo.style.transform=''; logo.style.transition='';},500);}
@@ -92,7 +90,6 @@ function closeMenu(){moveLogoToHeader(); body.style.overflow=''; setTimeout(()=>
 menuBtn.addEventListener('click',()=>menuBox.classList.contains('active')?closeMenu():openMenu());
 menuBox.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
 document.addEventListener('click',e=>{if(menuBox.classList.contains('active')&&!menuBox.contains(e.target)&&!menuBtn.contains(e.target)) closeMenu();});
-themeToggle.addEventListener('click',()=>{body.classList.toggle('dark-mode'); localStorage.setItem('theme',body.classList.contains('dark-mode')?'dark':'light');});
 
 // Animate application form
 const formSection = document.querySelector('.application-section');

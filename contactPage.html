@@ -31,9 +31,7 @@
     <a href="teams.html">Teams</a>
     <a href="shop.html">Shop</a>
 
-    <div id="themeToggle" class="theme-switch">
-      <div class="switch-thumb"></div>
-    </div>
+        </div>
   </aside>
 
   <section class="contact-section">
@@ -80,18 +78,14 @@
     const logo = document.querySelector('.logo');
     const menuLogoPlaceholder = document.querySelector('.menu-logo-placeholder');
     const headerLeft = document.querySelector('.left-header');
-    const themeToggle = document.getElementById('themeToggle');
-    const body = document.body;
+        const body = document.body;
     const contactForm = document.querySelector('form');
 
     // Load theme preference
-    if (localStorage.getItem('theme') === 'dark') body.classList.add('dark-mode');
+    
 
     // Theme toggle
-    themeToggle.addEventListener('click', () => {
-      body.classList.toggle('dark-mode');
-      localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
-    });
+              });
 
     // Menu toggle animation
     function moveLogoToMenu() {
