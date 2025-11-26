@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Share feedback with Yokai eSports." />
+  <meta name="theme-color" content="#ff2e3c" />
+  <title>Feedback — Yokai eSports</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/feedBack.css">
+
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <button class="icon-button" aria-label="Open menu" data-drawer-toggle>☰</button>
+        <a class="logo" href="index.html">YOKAI</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="teams.html">Teams</a></li>
+      </ul>
+      <div class="header-actions">
+        <button class="icon-button" aria-label="Toggle theme" data-theme-toggle>☾</button>
+      </div>
+    </div>
+  </header>
+
+  <aside class="drawer" data-drawer>
+    <a class="logo" href="index.html">YOKAI</a>
+    <a href="news.html">News</a>
+    <a href="teams.html">Teams</a>
+    <a href="content.html">Content</a>
+    <a href="shop.html">Shop</a>
+    <a href="partners.html">Partners</a>
+    <div class="drawer-section">
+      <a href="jobs.html">Jobs</a>
+      <a href="contactPage.html">Contact</a>
+      <a href="help.html">Help</a>
+      <a href="termsOfServices.html" target="_blank">Terms</a>
+      <a href="privacyPolicy.html" target="_blank">Privacy</a>
+    </div>
+    <button class="btn outline" data-theme-toggle>Toggle theme</button>
+  </aside>
+
+  <div class="page">
+    <section class="section">
+      <div class="section-header">
+        <h2>We value your feedback</h2>
+        <span class="muted">Tell us what you like and what we can improve.</span>
+      </div>
+      <form class="card form-card reveal">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" name="name" placeholder="Your name" />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" />
+        </div>
+        <div>
+          <label for="message">Feedback</label>
+          <textarea id="message" name="message" placeholder="Share your thoughts..."></textarea>
+        </div>
+        <div class="button-row">
+          <button class="btn primary" type="submit">Send feedback</button>
+          <a class="btn outline" href="contactPage.html">Need support?</a>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <footer class="footer">
+    Copyright © 2025 Yokai eSports — Designed by Thomas Peters
+  </footer>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>

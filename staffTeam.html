@@ -6,85 +6,19 @@
   <meta name="description" content="Yokai eSports Staff — Meet the team behind the scenes of Yokai eSports." />
   <meta name="theme-color" content="#ff2e3c" />
   <title>Yokai eSports | Staff</title>
-  <link rel="preload" as="image" href="images/staff_banner.jpg">
+  <link rel="preload" as="image" href="assets/TitleBackround.png">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css">
 
-  <style>
-    :root {
-      --bg-color: #0c0c10;
-      --text-color: #eef0f6;
-      --header-bg: #0c0c10;
-      --header-text: #eef0f6;
-      --hero-text-color: #ff2e3c;
-      --hero-overlay: rgba(12,12,16,0.72);
-      --team-border: #ff2e3c;
-      --extra-bg: #0c0c10;
-      --extra-text: #eef0f6;
-      --footer-bg: #0c0c10;
-      --footer-text: #b4b7c9;
-      --menu-bg: #0c0c10;
-      --menu-text: #eef0f6;
-      --menu-hover-bg: rgba(255,46,60,0.12);
-      --menu-hover-text: #ff2e3c;
-    }
-    html { scroll-behavior: smooth; }
-    body { margin:0; font-family:'Noto Sans JP',sans-serif; background-color:var(--bg-color); color:var(--text-color); overflow-x:hidden; transition: background-color 0.6s ease, color 0.6s ease; }
-    h1,h2,h3{ font-family:'Oswald',sans-serif; text-transform:uppercase; letter-spacing:2px; }
-    a{text-decoration:none; color:inherit; transition: color 0.6s ease; }
+  <link rel="stylesheet" href="styles/staffTeam.css">
 
-    header { background-color:var(--header-bg); color:var(--header-text); display:flex; justify-content:space-between; align-items:center; padding:15px 40px; box-shadow:0 2px 10px rgba(0,0,0,0.1); position:relative; z-index:100; transition: background-color 0.6s ease, color 0.6s ease; }
-    .left-header { display:flex; align-items:center; gap:15px; }
-    .logo { font-size:32px; font-weight:bold; letter-spacing:4px; color:#e2e0e0; position:relative; z-index:115; text-decoration:none; }
-    .menu-button { font-size:28px; background:none; border:none; color:#eef0f6; cursor:pointer; transition:transform 0.2s; z-index:110; }
-    .menu-button:hover { transform:scale(1.2); }
-    nav ul { list-style:none; display:flex; gap:25px; margin:0; padding:0; }
-    nav ul li { transition:0.3s; }
-    nav ul li:hover { transform:scale(1.3); }
-    @media (max-width:900px){ nav ul{ display:none; } }
-
-    .menu-box { position:fixed; top:0; left:-250px; width:250px; height:100vh; background:var(--menu-bg); color:var(--menu-text); box-shadow:3px 0 15px rgba(0,0,0,0.3); display:flex; flex-direction:column; padding-top:20px; transition:left 0.6s cubic-bezier(0.68,-0.55,0.27,1.55), background-color 0.6s ease, color 0.6s ease; z-index:105; }
-    .menu-box.active{ left:0; }
-    .menu-logo-placeholder{ height:60px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-    .menu-box a{ padding:15px 20px; font-weight:600; border-bottom:1px solid rgba(255,255,255,0.2); color:var(--menu-text); transition: background 0.2s,color 0.2s; }
-    .menu-box a:hover{ background:var(--menu-hover-bg); color:var(--menu-hover-text); }
-
-    .hero { background-image:url("images/staff_banner.jpg"); background-size:cover; background-position:center; background-repeat:no-repeat; color:var(--hero-text-color); text-align:center; padding:140px 20px; position:relative; transition: background-color 0.6s ease; }
-    .hero::after { content:""; position:absolute; top:0; left:0; width:100%; height:100%; background-color:var(--hero-overlay); z-index:0; transition: background-color 0.6s ease; }
-    .hero-content{ position:relative; z-index:1; }
-    .hero h1{ font-size:60px; margin-bottom:10px; color:var(--hero-text-color); text-shadow:2px 2px 5px black; }
-    .hero p{ font-size:22px; max-width:600px; margin:auto; }
-
-    .teams{ text-align:center; padding:80px 20px; background-color:#f9f9f9; }
-    .teams h2{ color:#ff2e3c; font-size:36px; margin-bottom:40px; }
-    .team-grid{ display:flex; justify-content:center; flex-wrap:wrap; gap:20px; }
-    .team-card{ background: var(--panel); border:3px solid var(--team-border); border-radius:10px; width:250px; padding:20px; transition:0.6s ease,border-color 0.6s ease; opacity:0; transform:translateY(50px); text-align:center; }
-    .team-card.visible{ opacity:1; transform:translateY(0); }
-    .team-card:hover{ transform:translateY(-8px) scale(1.03); box-shadow:0 4px 15px rgba(0,0,0,0.1); }
-    .team-card img{ width:100%; border-radius:8px; margin-bottom:12px; }
-
-    #overwatch-about{ padding:80px 20px; max-width:800px; margin:auto; text-align:center; line-height:1.8; }
-
-    .extra{ background-color:var(--extra-bg); color:var(--extra-text); padding:60px 20px; }
-    .extra h2{ font-size:26px; margin-bottom:10px; }
-    .extra-columns{ display:flex; gap:20px; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; }
-    .extra-left{ flex:2 1 0; min-width:260px; }
-    .extra-right{ flex:1 1 0; min-width:220px; }
-    .extra a{ color:var(--extra-text); text-decoration:none; font-weight:bold; }
-
-    footer{ background:var(--footer-bg); color:var(--footer-text); text-align:center; padding:15px; font-size:14px; }
-
-    body.dark-mode{ --bg-color:#0c0c10; --text-color:#eef0f6; --header-bg:#0c0c10; --header-text:#eef0f6; --hero-text-color:#ff2e3c; --hero-overlay:rgba(12,12,16,0.72); --team-border:#ff2e3c; --card-border:#ff2e3c; --extra-bg:#0c0c10; --extra-text:#eef0f6; --footer-bg:#0c0c10; --footer-text:#b4b7c9; --menu-bg:#0c0c10; --menu-text:#eef0f6; --menu-hover-bg:rgba(255,46,60,0.12); --menu-hover-text:#ff2e3c; }
-
-    @media (max-width:900px){ nav ul{ display:none; } .hero h1{ font-size:40px; } .team-card{ width:90%; } .extra-columns{ flex-direction:column; } }
-  </style>
 </head>
 
 <body>
   <header role="banner">
     <div class="left-header">
       <button class="menu-button" id="menuBtn" aria-label="Toggle menu">☰</button>
-      <a href="yokaiEsports.html" class="logo">YOKAI</a>
+      <a href="index.html" class="logo">YOKAI</a>
     </div>
     <nav aria-label="Main navigation">
       <ul>
@@ -117,27 +51,27 @@
     <h2>Staff Members</h2>
     <div class="team-grid">
       <div class="team-card">
-        <img src="images/staff1.jpg" alt="Thomas Peters">
+        <img src="assets/TitleBackround.png" alt="Thomas Peters">
         <h3>Thomas Peters</h3>
         <p>Founder & CEO</p>
       </div>
       <div class="team-card">
-        <img src="images/staff2.jpg" alt="Sakura Tanaka">
+        <img src="assets/TitleBackround.png" alt="Sakura Tanaka">
         <h3>Sakura Tanaka</h3>
         <p>Head of Marketing</p>
       </div>
       <div class="team-card">
-        <img src="images/staff3.jpg" alt="Kenji Ito">
+        <img src="assets/TitleBackround.png" alt="Kenji Ito">
         <h3>Kenji Ito</h3>
         <p>Team Manager</p>
       </div>
       <div class="team-card">
-        <img src="images/staff4.jpg" alt="Mika Suzuki">
+        <img src="assets/TitleBackround.png" alt="Mika Suzuki">
         <h3>Mika Suzuki</h3>
         <p>Content Creator</p>
       </div>
       <div class="team-card">
-        <img src="images/staff5.jpg" alt="Ren Yamamoto">
+        <img src="assets/TitleBackround.png" alt="Ren Yamamoto">
         <h3>Ren Yamamoto</h3>
         <p>Coach</p>
       </div>
@@ -203,5 +137,6 @@
 
     themeToggle.addEventListener('click', ()=>{ body.classList.toggle('dark-mode'); localStorage.setItem('theme', body.classList.contains('dark-mode')?'dark':'light'); });
   </script>
+  <script src="scripts/main.js"></script>
 </body>
 </html>

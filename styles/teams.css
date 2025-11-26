@@ -1,0 +1,20 @@
+
+    .hero[data-hero] { --hero-image: url('assets/TitleBackround.png'); }
+    .team-card {
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      min-height: 220px;
+      display: grid;
+      align-content: end;
+      isolation: isolate;
+    }
+    .team-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(12, 12, 16, 0.78), rgba(12, 12, 16, 0.2));
+      z-index: 0;
+    }
+    .team-card > * { position: relative; z-index: 1; }
+  

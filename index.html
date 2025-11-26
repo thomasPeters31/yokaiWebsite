@@ -9,28 +9,15 @@
   <link rel="preload" as="image" href="assets/TitleBackround.png">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css">
-  <style>
-    .hero[data-hero] { --hero-image: url('assets/TitleBackround.png'); }
-    .stat {
-      display: inline-flex;
-      flex-direction: column;
-      gap: 4px;
-      padding: 12px 14px;
-      border-radius: 12px;
-      background: var(--panel);
-      border: 1px solid var(--stroke);
-      min-width: 140px;
-    }
-    .stat strong { font-size: 18px; letter-spacing: 0.5px; }
-    .stat span { color: var(--muted); font-size: 13px; }
-  </style>
+  <link rel="stylesheet" href="styles/index.css">
+
 </head>
 <body>
   <header class="site-header">
     <div class="header-inner">
       <div class="brand">
         <button class="icon-button" aria-label="Open menu" data-drawer-toggle>☰</button>
-        <a class="logo" href="yokaiEsports.html">YOKAI</a>
+        <a class="logo" href="index.html">YOKAI</a>
       </div>
       <ul class="nav-links">
         <li><a href="#teams">Teams</a></li>
@@ -45,7 +32,7 @@
   </header>
 
   <aside class="drawer" data-drawer>
-    <a class="logo" href="yokaiEsports.html">YOKAI</a>
+    <a class="logo" href="index.html">YOKAI</a>
     <a href="teams.html">Teams</a>
     <a href="content.html">Content</a>
     <a href="shop.html">Shop</a>

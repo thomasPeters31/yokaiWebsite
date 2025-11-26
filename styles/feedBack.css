@@ -1,0 +1,8 @@
+
+    .page { max-width: 780px; padding-top: 48px; }
+    .form-card { display: grid; gap: 14px; }
+    label { font-weight: 600; color: var(--text); }
+    input, textarea { width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--stroke); background: var(--panel); color: var(--text); }
+    textarea { min-height: 140px; resize: vertical; }
+    button { border: none; cursor: pointer; }
+  

@@ -1,0 +1,15 @@
+
+    .hero[data-hero] { --hero-image: url('assets/TitleBackround.png'); }
+    .stat {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: var(--panel);
+      border: 1px solid var(--stroke);
+      min-width: 140px;
+    }
+    .stat strong { font-size: 18px; letter-spacing: 0.5px; }
+    .stat span { color: var(--muted); font-size: 13px; }
+  
