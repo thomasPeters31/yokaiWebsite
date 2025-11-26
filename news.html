@@ -1,199 +1,207 @@
-<script>
-  // ---------- Existing elements ----------
-  const menuBtn = document.getElementById('menuBtn');
-  const menuBox = document.getElementById('menuBox');
-  const headerLogo = document.getElementById('headerLogo');
-  const menuLogoPlaceholder = document.getElementById('menuLogoPlaceholder');
-  const themeToggle = document.getElementById('themeToggle');
-  const body = document.body;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Yokai eSports news, announcements, roster moves, and live updates." />
+  <meta name="theme-color" content="#ff2e3c" />
+  <title>Yokai eSports | News</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+  <style>
+    .hero[data-hero] { --hero-image: url('assets/TitleBackround.png'); }
+    .news-meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; color:var(--muted); font-size:13px; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <button class="icon-button" aria-label="Open menu" data-drawer-toggle>☰</button>
+        <a class="logo" href="yokaiEsports.html">YOKAI</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="yokaiEsports.html">Home</a></li>
+        <li><a href="teams.html">Teams</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="#latest">Latest</a></li>
+      </ul>
+      <div class="header-actions">
+        <button class="icon-button" aria-label="Toggle theme" data-theme-toggle>☾</button>
+      </div>
+    </div>
+  </header>
 
-  // Old news state
-  const oldNews = document.getElementById('oldNews');
-  const toggleBtn = document.getElementById('toggleOldNews');
-  let manualOldNewsState = false;
+  <aside class="drawer" data-drawer>
+    <a class="logo" href="yokaiEsports.html">YOKAI</a>
+    <a href="news.html">News</a>
+    <a href="teams.html">Teams</a>
+    <a href="content.html">Content</a>
+    <a href="shop.html">Shop</a>
+    <a href="partners.html">Partners</a>
+    <div class="drawer-section">
+      <a href="jobs.html">Jobs</a>
+      <a href="contactPage.html">Contact</a>
+      <a href="help.html">Help</a>
+      <a href="termsOfServices.html" target="_blank">Terms</a>
+      <a href="privacyPolicy.html" target="_blank">Privacy</a>
+    </div>
+    <button class="btn outline" data-theme-toggle>Toggle theme</button>
+  </aside>
 
-  // ---------- Logo animation & menu ----------
-  function moveLogo(toMenu=true) {
-    const headerRect = headerLogo.getBoundingClientRect();
-    const menuRect = menuLogoPlaceholder.getBoundingClientRect();
-    let deltaX, deltaY;
+  <div class="page">
+    <section class="hero" data-hero>
+      <div class="hero-content">
+        <span class="eyebrow">Live from the dojo</span>
+        <h1>Yokai Newsroom</h1>
+        <p>Roster moves, scrim highlights, and announcements—curated and refreshed automatically.</p>
+        <div class="button-row">
+          <a class="btn primary" href="#latest">See latest updates</a>
+          <a class="btn outline" href="#archive">Browse the archive</a>
+        </div>
+      </div>
+    </section>
 
-    if(toMenu){
-      deltaX = menuRect.left + menuRect.width/2 - (headerRect.left + headerRect.width/2);
-      deltaY = menuRect.top + menuRect.height/2 - (headerRect.top + headerRect.height/2);
-    } else {
-      const headerLeft = document.querySelector('.left-header').getBoundingClientRect();
-      deltaX = headerLeft.left - headerRect.left;
-      deltaY = headerLeft.top - headerRect.top;
+    <section id="latest" class="section">
+      <div class="section-header">
+        <h2>Latest feed</h2>
+        <span class="muted">Pulled from our social + newsroom.</span>
+      </div>
+      <div class="search">
+        <span>🔍</span>
+        <input id="newsSearch" type="search" placeholder="Search announcements, roster moves, scrims..." aria-label="Search news">
+      </div>
+      <div class="two-col" style="margin-top:20px;">
+        <div class="grid" id="latestNews">
+          <article class="card news-card reveal" data-news-card data-tags="valorant roster">
+            <span class="tag">Valorant</span>
+            <h3>Valorant roster locks in for Split 1</h3>
+            <p>Core four stays, with a new IGL to sharpen mid-round calls.</p>
+            <div class="news-meta"><time datetime="2025-01-05">Jan 5, 2025</time><span class="badge">Roster</span></div>
+          </article>
+          <article class="card news-card reveal" data-news-card data-tags="cs2 tournament">
+            <span class="tag">CS2</span>
+            <h3>CS2 squad heads to Qualifiers</h3>
+            <p>Bootcamp complete. We’re entering the open bracket with a 70% scrim win rate.</p>
+            <div class="news-meta"><time datetime="2025-01-02">Jan 2, 2025</time><span class="badge">Tournament</span></div>
+          </article>
+          <article class="card news-card reveal" data-news-card data-tags="content video">
+            <span class="tag">Content</span>
+            <h3>New VOD review series drops weekly</h3>
+            <p>Coaches break down executes, defaults, and clutch protocols from recent matches.</p>
+            <div class="news-meta"><time datetime="2024-12-28">Dec 28, 2024</time><span class="badge">Video</span></div>
+          </article>
+        </div>
+        <div class="card reveal">
+          <h3>Filters</h3>
+          <div class="pill-rail" id="filters">
+            <button class="btn outline" data-filter="all">All</button>
+            <button class="btn outline" data-filter="valorant">Valorant</button>
+            <button class="btn outline" data-filter="cs2">CS2</button>
+            <button class="btn outline" data-filter="roster">Roster</button>
+            <button class="btn outline" data-filter="content">Content</button>
+          </div>
+          <p class="muted">Pro tip: use search + filters together to narrow down announcements.</p>
+          <div class="button-row">
+            <a class="btn primary" href="https://x.com/YokaieSportGG" target="_blank" rel="noreferrer">Follow on X →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="archive" class="section">
+      <div class="section-header">
+        <h2>Archive</h2>
+        <span class="muted">Older drops still worth a read.</span>
+      </div>
+      <div class="grid" id="archiveGrid">
+        <article class="card news-card reveal" data-news-card data-tags="valorant scrims">
+          <span class="tag">Valorant</span>
+          <h3>Scrim block vs top 16 wraps</h3>
+          <p>New bind exec pays off—4/5 wins this block.</p>
+          <div class="news-meta"><time datetime="2024-12-12">Dec 12, 2024</time><span class="badge">Scrims</span></div>
+        </article>
+        <article class="card news-card reveal" data-news-card data-tags="cs2 content">
+          <span class="tag">CS2</span>
+          <h3>Utility bible update</h3>
+          <p>Our coaches dropped fresh CT side setups and execs for Mirage.</p>
+          <div class="news-meta"><time datetime="2024-12-01">Dec 1, 2024</time><span class="badge">Guide</span></div>
+        </article>
+        <article class="card news-card reveal" data-news-card data-tags="community charity">
+          <span class="tag">Community</span>
+          <h3>Charity stream clears target</h3>
+          <p>Raised funds for local STEM programs—thank you for showing up.</p>
+          <div class="news-meta"><time datetime="2024-11-20">Nov 20, 2024</time><span class="badge">Community</span></div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    Copyright © 2025 Yokai eSports — Designed by Thomas Peters
+  </footer>
+
+  <script src="scripts/main.js"></script>
+  <script>
+    const searchInput = document.getElementById('newsSearch');
+    const filterButtons = document.querySelectorAll('#filters .btn');
+
+    function normalize(text) {
+      return text.toLowerCase();
     }
 
-    headerLogo.style.position = 'fixed';
-    headerLogo.style.left = headerRect.left + 'px';
-    headerLogo.style.top = headerRect.top + 'px';
-    headerLogo.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-    headerLogo.style.transition = 'transform 0.5s cubic-bezier(0.68,-0.55,0.27,1.55)';
+    function filterCards() {
+      const query = normalize(searchInput.value.trim());
+      const activeFilter = document.querySelector('#filters .btn.active')?.dataset.filter || 'all';
+      const cards = document.querySelectorAll('[data-news-card]');
 
-    setTimeout(() => {
-      if(toMenu) menuLogoPlaceholder.appendChild(headerLogo);
-      else document.querySelector('.left-header').prepend(headerLogo);
-
-      headerLogo.style.position = 'relative';
-      headerLogo.style.left = '';
-      headerLogo.style.top = '';
-      headerLogo.style.transform = '';
-      headerLogo.style.transition = '';
-    }, 500);
-  }
-
-  function openMenu() { moveLogo(true); menuBox.classList.add('active'); body.style.overflow='hidden'; }
-  function closeMenu() { moveLogo(false); menuBox.classList.remove('active'); body.style.overflow=''; }
-
-  menuBtn.addEventListener('click', () => menuBox.classList.contains('active') ? closeMenu() : openMenu());
-  document.addEventListener('click', e => { if(menuBox.classList.contains('active') && !menuBox.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
-
-  // ---------- Toggle older news ----------
-  function setOldNewsVisibility(visible) {
-    oldNews.style.display = visible ? 'flex' : 'none';
-    toggleBtn.textContent = visible ? 'Hide Older News' : 'Show Older News';
-  }
-
-  toggleBtn.addEventListener('click', () => {
-    manualOldNewsState = !manualOldNewsState;
-    setOldNewsVisibility(manualOldNewsState);
-  });
-
-  // ---------- Reveal animation ----------
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.18 });
-
-  function observeCards() {
-    document.querySelectorAll('.news-card').forEach(card => observer.observe(card));
-  }
-
-  // ---------- Dark mode ----------
-  if(localStorage.getItem('theme') === 'dark') body.classList.add('dark-mode');
-  themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
-  });
-
-  // ---------- Search ----------
-  const searchBtn = document.getElementById('searchBtn');
-  const searchInput = document.getElementById('searchInput');
-  const closeSearch = document.getElementById('closeSearch');
-
-  searchBtn.addEventListener('click', () => {
-    searchInput.classList.toggle('active');
-    if (searchInput.classList.contains('active')) setTimeout(() => searchInput.focus(), 300);
-  });
-
-  closeSearch.addEventListener('click', () => {
-    searchInput.value = '';
-    searchInput.classList.remove('active');
-    filterNews();
-  });
-
-  document.addEventListener('click', (e) => {
-    const isClickInside = searchInput.contains(e.target) || searchBtn.contains(e.target) || closeSearch.contains(e.target);
-    if (!isClickInside) searchInput.classList.remove('active');
-  });
-
-  function escapeRegExp(string) {
-    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  }
-
-  function highlightMatch(text, query) {
-    if (!query) return text;
-    const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
-    return text.replace(regex, '<span class="highlight">$1</span>');
-  }
-
-  // ---------- Filter function that works for dynamic tweets too ----------
-  function filterNews() {
-    const rawQuery = searchInput.value.trim();
-    const qLower = rawQuery.toLowerCase();
-    const allNews = Array.from(document.querySelectorAll('.news-card'));
-    const oldNewsCards = Array.from(oldNews.children);
-
-    if (qLower === '') {
-      allNews.forEach(card => {
-        card.style.display = 'block';
-        card.classList.remove('fade-in');
-        const h = card.querySelector('h3'); if(h) h.innerHTML = h.textContent;
-        const p = card.querySelector('p'); if(p) p.innerHTML = p.textContent;
+      cards.forEach(card => {
+        const text = normalize(card.innerText);
+        const tags = normalize(card.dataset.tags || '');
+        const matchesQuery = !query || text.includes(query);
+        const matchesFilter = activeFilter === 'all' || tags.includes(activeFilter);
+        card.style.display = matchesQuery && matchesFilter ? '' : 'none';
       });
-      setOldNewsVisibility(manualOldNewsState);
-      return;
     }
 
-    let anyOldMatch = false;
+    searchInput?.addEventListener('input', filterCards);
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterCards();
+      });
+    });
 
-    allNews.forEach(card => {
-      const titleElem = card.querySelector('h3');
-      const descElem = card.querySelector('p');
-      const titleText = titleElem ? titleElem.textContent.toLowerCase() : '';
-      const descText = descElem ? descElem.textContent.toLowerCase() : '';
+    filterButtons[0]?.classList.add('active');
+    filterCards();
 
-      if (titleText.includes(qLower) || descText.includes(qLower)) {
-        card.style.display = 'block';
-        card.classList.add('fade-in');
-        if (titleElem) titleElem.innerHTML = highlightMatch(titleElem.textContent, rawQuery);
-        if (descElem) descElem.innerHTML = highlightMatch(descElem.textContent, rawQuery);
-      } else {
-        card.style.display = 'none';
-        card.classList.remove('fade-in');
-        if (titleElem) titleElem.innerHTML = titleElem.textContent;
-        if (descElem) descElem.innerHTML = descElem.textContent;
+    async function loadTweets() {
+      const container = document.getElementById('latestNews');
+      try {
+        const res = await fetch('/api/tweets');
+        if (!res.ok) throw new Error('Bad response');
+        const data = await res.json();
+        if (!data.tweets || !Array.isArray(data.tweets) || !data.tweets.length) return;
+        container.innerHTML = '';
+        data.tweets.forEach((tweet) => {
+          const card = document.createElement('article');
+          card.className = 'card news-card reveal';
+          card.dataset.newsCard = 'true';
+          card.dataset.tags = 'social';
+          card.innerHTML = `
+            <span class="tag">Live</span>
+            <h3>${tweet.text}</h3>
+            <p class="news-meta" style="margin:0;"><a class="cta" href="https://x.com/${tweet.username}/status/${tweet.id}" target="_blank" rel="noreferrer">View on X →</a></p>
+          `;
+          container.appendChild(card);
+        });
+      } catch (err) {
+        console.error('Failed to load tweets', err);
       }
-    });
-
-    // Check if any old news is visible
-    anyOldMatch = oldNewsCards.some(card => card.style.display === 'block');
-    if (anyOldMatch) setOldNewsVisibility(true);
-    else setOldNewsVisibility(manualOldNewsState);
-  }
-
-  searchInput.addEventListener('input', filterNews);
-
-  // ---------- Initialize ----------
-  setOldNewsVisibility(false);
-  document.querySelectorAll('.news-card').forEach(card => {
-    if (card.getBoundingClientRect().top < window.innerHeight) card.classList.add('visible');
-  });
-  observeCards();
-
-  // ---------- Load tweets dynamically ----------
-  async function loadTweets() {
-    try {
-      const res = await fetch('/api/tweets');
-      const data = await res.json();
-
-      const latestNewsGrid = document.getElementById('latestNews');
-      latestNewsGrid.innerHTML = ''; // Clear placeholder cards
-
-      data.tweets.forEach(tweet => {
-        const card = document.createElement('div');
-        card.classList.add('news-card', 'visible');
-        card.innerHTML = `
-          <h3>${tweet.text}</h3>
-          <p><a href="https://x.com/${tweet.username}/status/${tweet.id}" target="_blank" style="color:var(--card-border);">View on X →</a></p>
-        `;
-        latestNewsGrid.appendChild(card);
-      });
-
-      observeCards(); // ensure IntersectionObserver works on new cards
-      filterNews(); // immediately apply current search filter to tweets
-
-    } catch (err) {
-      console.error('Error loading tweets:', err);
-      const latestNewsGrid = document.getElementById('latestNews');
-      latestNewsGrid.innerHTML = '<p style="text-align:center;">Unable to load tweets right now.</p>';
     }
-  }
 
-  document.addEventListener('DOMContentLoaded', loadTweets);
-
-</script>
+    loadTweets();
+  </script>
+</body>
+</html>
