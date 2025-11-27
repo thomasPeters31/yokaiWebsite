@@ -149,7 +149,7 @@
 
     // Fetch live tweets from the backend and hydrate the latest feed
     // GitHub Pages-friendly: pull pre-generated JSON from the repo (see data/news.json)
-    const TWEETS_API = 'data/news.json';
+    const TWEETS_API = new URL('data/news.json', window.location.href).toString();
 
     const feedStatus = document.querySelector('[data-feed-status]');
     const latestGrid = document.getElementById('latestNews');
@@ -176,13 +176,14 @@
       const primaryTag = tags[0] || 'Live';
       const formattedDate = formatDate(tweet.created_at);
       const href = `https://x.com/${tweet.username}/status/${tweet.id}`;
+      const safeText = (tweet.text || '').replace(/\n/g, '<br>');
       const div = document.createElement('article');
       div.className = 'card news-card reveal';
       div.dataset.newsCard = 'true';
       div.dataset.tags = tags.join(' ');
       div.innerHTML = `
         <span class="tag">${primaryTag}</span>
-        <h3>${tweet.text}</h3>
+        <h3>${safeText}</h3>
         <div class="news-meta">
           ${formattedDate ? `<time datetime="${tweet.created_at}">${formattedDate}</time>` : ''}
           <span class="badge">X</span>
@@ -217,7 +218,11 @@
         renderFeed(data.tweets);
       } catch (err) {
         console.error('Failed to load tweets', err);
-        if (feedStatus) feedStatus.textContent = 'Unable to load live feed. Check your API endpoint.';
+        if (feedStatus) {
+          feedStatus.textContent = 'Unable to load live feed. Check data/news.json is available.';
+          latestGrid.innerHTML = '';
+          latestGrid.appendChild(feedStatus);
+        }
       }
     }
 
