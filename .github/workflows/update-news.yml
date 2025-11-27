@@ -41,8 +41,8 @@ jobs:
           const OUTPUT = process.env.NEWS_JSON;
 
           if (!BEARER) {
-            console.error('Missing BEARER_TOKEN secret (set X_BEARER in repo secrets)');
-            process.exit(1);
+            console.warn('Missing BEARER_TOKEN (X_BEARER). Skipping update but keeping existing file.');
+            process.exit(0);
           }
 
           async function getUserId(username) {
@@ -79,8 +79,8 @@ jobs:
             fs.writeFileSync(OUTPUT, JSON.stringify(payload, null, 2));
             console.log(`Wrote ${tweets.length} tweets to ${OUTPUT}`);
           })().catch(err => {
-            console.error(err);
-            process.exit(1);
+            console.error('Fetch failed, leaving existing JSON untouched:', err?.message || err);
+            process.exit(0); // do not fail push if API is down
           });
           EOF
 
