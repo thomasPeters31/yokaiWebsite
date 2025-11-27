@@ -1,4 +1,5 @@
 /* Global site theming, layout primitives, and shared component styles */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
 :root {
   --bg: #0c0c10;
   --panel: rgba(255, 255, 255, 0.04);
@@ -448,6 +449,58 @@ img {
   align-items: center;
   gap: 8px;
   color: var(--muted);
+}
+
+.social-circle-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0 6px;
+}
+
+.social-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card);
+  color: #fff;
+  border: 1px solid var(--stroke);
+  box-shadow: var(--glow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.social-circle:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+.social-circle[data-platform="discord"] { background: #5865f2; }
+.social-circle[data-platform="x"] { background: #0f1419; }
+.social-circle[data-platform="instagram"] {
+  background: radial-gradient(circle at 30% 30%, #feda75 0, #d62976 45%, #962fbf 70%, #4f5bd5 100%);
+}
+.social-circle[data-platform="youtube"] { background: #ff0000; }
+.social-circle[data-platform="twitch"] { background: #9146ff; }
+.social-circle[data-platform="tiktok"] { background: #111; }
+
+.social-circle i {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .search {
