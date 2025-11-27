@@ -4,6 +4,8 @@ on:
   schedule:
     # Runs every 3 hours; adjust as needed
     - cron: "0 */3 * * *"
+  push:
+    branches: [ "main" ]
   workflow_dispatch:
 
 permissions:
@@ -97,4 +99,4 @@ jobs:
           fi
           git add "$NEWS_JSON"
           git commit -m "chore: update news feed data"
-          git push
+          git push origin HEAD:main
