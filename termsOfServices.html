@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Terms of Service page with slide-out drawer -->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -8,12 +9,12 @@
   <title>Terms of Service – Yokai eSports</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css">
-  
   <link rel="stylesheet" href="styles/termsOfServices.css">
 
 </head>
 
 <body>
+  <!-- Header with logo + drawer toggle -->
   <header>
     <div class="header-left">
       <div class="logo" id="logo" onclick="window.location.href='index.html'">YOKAI</div>
@@ -29,11 +30,9 @@
     <a href="content.html">Content</a>
     <a href="teams.html">Teams</a>
     <a href="shop.html">Shop</a>
-
-    <!-- Dark/Light Mode Switch -->
-        </div>
   </aside>
 
+  <!-- Terms copy -->
   <main class="terms-container">
     <h1>Terms of Service</h1>
     <p>Welcome to Yokai eSports! By accessing or using our website, you agree to comply with and be bound by the following terms and conditions. Please read them carefully.</p>
@@ -67,20 +66,23 @@
   </footer>
 
   <script>
+    // Drawer + logo animation wiring
     const menuBtn = document.getElementById('menuBtn');
     const menuBox = document.getElementById('menuBox');
     const logo = document.getElementById('logo');
     const menuLogoPlaceholder = document.getElementById('menuLogoPlaceholder');
-        const body = document.body;// Logo animation functions
+        const body = document.body;
+
+    // Slide logo into drawer when opening
     function moveLogoToMenu() {
       const headerRect = logo.getBoundingClientRect();
       const menuRect = menuLogoPlaceholder.getBoundingClientRect();
-      const deltaX = menuRect.left + menuRect.width/2 - (headerRect.left + headerRect.width/2);
-      const deltaY = menuRect.top + menuRect.height/2 - (headerRect.top + headerRect.height/2);
+      const deltaX = menuRect.left + menuRect.width / 2 - (headerRect.left + headerRect.width / 2);
+      const deltaY = menuRect.top + menuRect.height / 2 - (headerRect.top + headerRect.height / 2);
       logo.style.position = 'fixed';
       logo.style.left = headerRect.left + 'px';
       logo.style.top = headerRect.top + 'px';
-      logo.style.transform = `translate(${deltaXpx, ${deltaYpx)`;
+      logo.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
       logo.style.transition = 'transform 0.5s ease';
       setTimeout(() => {
         menuLogoPlaceholder.appendChild(logo);
@@ -89,7 +91,10 @@
         logo.style.top = '';
         logo.style.transform = '';
         logo.style.transition = '';
-      , 500);
+      }, 500);
+    }
+
+    // Return logo to header on close
     function moveLogoToHeader() {
       const menuRect = logo.getBoundingClientRect();
       const headerRect = document.querySelector('.header-left').getBoundingClientRect();
@@ -98,7 +103,7 @@
       logo.style.position = 'fixed';
       logo.style.left = menuRect.left + 'px';
       logo.style.top = menuRect.top + 'px';
-      logo.style.transform = `translate(${deltaXpx, ${deltaYpx)`;
+      logo.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
       logo.style.transition = 'transform 0.5s ease';
       setTimeout(() => {
         document.querySelector('.header-left').prepend(logo);
@@ -107,32 +112,35 @@
         logo.style.top = '';
         logo.style.transform = '';
         logo.style.transition = '';
-      , 500);
-    // Menu open/close
+      }, 500);
+    }
+
+    // Drawer state helpers
     function openMenu() {
       moveLogoToMenu();
       document.body.style.overflow = 'hidden';
-      menuBtn.classList.add('hidden'); // fade out button
+      menuBtn.classList.add('hidden');
       setTimeout(() => menuBox.classList.add('active'), 100);
+    }
+
     function closeMenu() {
       moveLogoToHeader();
       document.body.style.overflow = '';
-      menuBtn.classList.remove('hidden'); // fade in button
+      menuBtn.classList.remove('hidden');
       setTimeout(() => menuBox.classList.remove('active'), 300);
+    }
+
     menuBtn.addEventListener('click', () => {
-      if(menuBox.classList.contains('active')) { closeMenu();  else { openMenu(); 
-    );
+      if (menuBox.classList.contains('active')) { closeMenu(); } else { openMenu(); }
+    });
 
     menuBox.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
 
     document.addEventListener('click', (e) => {
       if (menuBox.classList.contains('active') &&
           !menuBox.contains(e.target) &&
-          !menuBtn.contains(e.target)) { closeMenu(); 
-    );
-
-    // Theme toggle
-              );
+          !menuBtn.contains(e.target)) { closeMenu(); }
+    });
   </script>
   <script src="scripts/main.js"></script>
 </body>

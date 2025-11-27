@@ -1,3 +1,4 @@
+// Simple Express server to proxy tweets from X API and serve static assets
 import express from "express";
 import fetch from "node-fetch";
 import cors from "cors";

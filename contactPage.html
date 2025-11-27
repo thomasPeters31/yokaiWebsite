@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Contact page with slide-out menu and contact form -->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -16,6 +17,7 @@
 </head>
 
 <body>
+  <!-- Simple header with logo and menu toggle -->
   <header>
     <div class="left-header">
       <button class="menu-button" id="menuBtn" aria-label="Toggle menu">☰</button>
@@ -23,6 +25,7 @@
     </div>
   </header>
 
+  <!-- Slide-out nav -->
   <aside class="menu-box" id="menuBox">
     <div class="menu-logo-placeholder"></div>
     <a href="news.html">News</a>
@@ -34,6 +37,7 @@
         </div>
   </aside>
 
+  <!-- Contact form posting to PHPMailer backend -->
   <section class="contact-section">
     <h2>Contact Us</h2>
     <form action="sendMail.php" method="post">
@@ -73,6 +77,7 @@
   </footer>
 
   <script>
+    // Menu + logo animation setup
     const menuBtn = document.getElementById('menuBtn');
     const menuBox = document.getElementById('menuBox');
     const logo = document.querySelector('.logo');
@@ -81,13 +86,7 @@
         const body = document.body;
     const contactForm = document.querySelector('form');
 
-    // Load theme preference
-    
-
-    // Theme toggle
-              });
-
-    // Menu toggle animation
+    // Animate the logo into the drawer when opening
     function moveLogoToMenu() {
       const headerRect = logo.getBoundingClientRect();
       const menuRect = menuLogoPlaceholder.getBoundingClientRect();
@@ -108,6 +107,7 @@
       }, 500);
     }
 
+    // Animate the logo back into the header when closing
     function moveLogoToHeader() {
       const menuRect = logo.getBoundingClientRect();
       const headerRect = headerLeft.getBoundingClientRect();
@@ -128,9 +128,11 @@
       }, 500);
     }
 
+    // Open/close drawer helpers
     function openMenu() { moveLogoToMenu(); menuBox.classList.add('active'); }
     function closeMenu() { moveLogoToHeader(); menuBox.classList.remove('active'); }
 
+    // Toggle handlers
     menuBtn.addEventListener('click', () => {
       menuBox.classList.contains('active') ? closeMenu() : openMenu();
     });

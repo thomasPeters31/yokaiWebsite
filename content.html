@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Content hub: latest video embed, creator grid, and slide-out nav -->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -111,6 +112,7 @@
   </footer>
 
   <script>
+    // Menu + animations reused across pages
     const menuBtn = document.getElementById('menuBtn');
     const menuBox = document.getElementById('menuBox');
     const logo = document.querySelector('.logo');
@@ -118,18 +120,67 @@
     const headerLeft = document.querySelector('.left-header');
         const body = document.body;
 
-    
+    // Slide logo into drawer when opening
+    function moveLogoToMenu() {
+      const headerRect = logo.getBoundingClientRect();
+      const menuRect = menuLogoPlaceholder.getBoundingClientRect();
+      const deltaX = menuRect.left + menuRect.width / 2 - (headerRect.left + headerRect.width / 2);
+      const deltaY = menuRect.top + menuRect.height / 2 - (headerRect.top + headerRect.height / 2);
+      logo.style.position = 'fixed';
+      logo.style.left = headerRect.left + 'px';
+      logo.style.top = headerRect.top + 'px';
+      logo.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+      logo.style.transition = 'transform 0.5s ease';
+      setTimeout(() => {
+        menuLogoPlaceholder.appendChild(logo);
+        logo.style.position = 'relative';
+        logo.style.left = '';
+        logo.style.top = '';
+        logo.style.transform = '';
+        logo.style.transition = '';
+      }, 500);
+    }
 
-    function moveLogoToMenu(){ const headerRect=logo.getBoundingClientRect(); const menuRect=menuLogoPlaceholder.getBoundingClientRect(); const deltaX=menuRect.left+menuRect.width/2-(headerRect.left+headerRect.width/2); const deltaY=menuRect.top+menuRect.height/2-(headerRect.top+headerRect.height/2); logo.style.position='fixed'; logo.style.left=headerRect.left+'px'; logo.style.top=headerRect.top+'px'; logo.style.transform=`translate(${deltaX}px, ${deltaY}px)`; logo.style.transition='transform 0.5s ease'; setTimeout(()=>{ menuLogoPlaceholder.appendChild(logo); logo.style.position='relative'; logo.style.left=''; logo.style.top=''; logo.style.transform=''; logo.style.transition=''; },500); }
-    function moveLogoToHeader(){ const menuRect=logo.getBoundingClientRect(); const headerRect=headerLeft.getBoundingClientRect(); const deltaX=headerRect.left-menuRect.left; const deltaY=headerRect.top-menuRect.top; logo.style.position='fixed'; logo.style.left=menuRect.left+'px'; logo.style.top=menuRect.top+'px'; logo.style.transform=`translate(${deltaX}px, ${deltaY}px)`; logo.style.transition='transform 0.5s ease'; setTimeout(()=>{ headerLeft.prepend(logo); logo.style.position='relative'; logo.style.left=''; logo.style.top=''; logo.style.transform=''; logo.style.transition=''; },500); }
-    function openMenu(){ moveLogoToMenu(); document.body.style.overflow='hidden'; setTimeout(()=>menuBox.classList.add('active'),100); }
-    function closeMenu(){ moveLogoToHeader(); document.body.style.overflow=''; setTimeout(()=>menuBox.classList.remove('active'),300); }
-    menuBtn.addEventListener('click', ()=>menuBox.classList.contains('active')?closeMenu():openMenu());
-    menuBox.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
-    document.addEventListener('click', e=>{ if(menuBox.classList.contains('active')&&!menuBox.contains(e.target)&&!menuBtn.contains(e.target)) closeMenu(); });
+    // Return logo to header on close
+    function moveLogoToHeader() {
+      const menuRect = logo.getBoundingClientRect();
+      const headerRect = headerLeft.getBoundingClientRect();
+      const deltaX = headerRect.left - menuRect.left;
+      const deltaY = headerRect.top - menuRect.top;
+      logo.style.position = 'fixed';
+      logo.style.left = menuRect.left + 'px';
+      logo.style.top = menuRect.top + 'px';
+      logo.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+      logo.style.transition = 'transform 0.5s ease';
+      setTimeout(() => {
+        headerLeft.prepend(logo);
+        logo.style.position = 'relative';
+        logo.style.left = '';
+        logo.style.top = '';
+        logo.style.transform = '';
+        logo.style.transition = '';
+      }, 500);
+    }
 
-    const observer=new IntersectionObserver((entries, observer)=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); }, {threshold:0.2});
-    document.querySelectorAll('.team-card').forEach(card=>observer.observe(card));
+    // Drawer open/close helpers
+    function openMenu() { moveLogoToMenu(); document.body.style.overflow = 'hidden'; setTimeout(() => menuBox.classList.add('active'), 100); }
+    function closeMenu() { moveLogoToHeader(); document.body.style.overflow = ''; setTimeout(() => menuBox.classList.remove('active'), 300); }
+
+    // Toggle handlers
+    menuBtn.addEventListener('click', () => menuBox.classList.contains('active') ? closeMenu() : openMenu());
+    menuBox.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('click', e => { if (menuBox.classList.contains('active') && !menuBox.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
+
+    // IntersectionObserver to fade team cards into view
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.team-card').forEach(card => observer.observe(card));
 
       </script>
   <script src="scripts/main.js"></script>

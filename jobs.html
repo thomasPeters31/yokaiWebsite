@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Jobs listing page with interactive cards linking to application form -->
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -13,6 +14,7 @@
 
 </head>
 <body>
+<!-- Header + anchor nav -->
 <header>
   <div class="left-header">
     <button class="menu-button" id="menuBtn" aria-label="Toggle menu">☰</button>
@@ -26,6 +28,7 @@
   </nav>
 </header>
 
+<!-- Drawer menu -->
 <aside class="menu-box" id="menuBox">
   <div class="menu-logo-placeholder"></div>
   <a href="news.html">News</a>
@@ -33,8 +36,9 @@
   <a href="content.html">Content</a>
   <a href="teams.html">Teams</a>
   <a href="shop.html">Shop</a>
-  </aside>
+</aside>
 
+<!-- Hero introduction -->
 <section class="hero">
   <div class="hero-content">
     <h1>Join Our Team</h1>
@@ -42,6 +46,7 @@
   </div>
 </section>
 
+<!-- Job cards redirect to application page with role pre-filled -->
 <section id="jobs-section" class="jobs-section">
   <h2>Available Positions</h2>
   <div class="jobs-grid">
@@ -53,6 +58,7 @@
   </div>
 </section>
 
+<!-- Footer-style extra links -->
 <section class="extra" id="extra">
   <div class="extra-columns">
     <div class="extra-left">
@@ -79,9 +85,6 @@ const logo = document.querySelector('.logo');
 const menuLogoPlaceholder = document.querySelector('.menu-logo-placeholder');
 const headerLeft = document.querySelector('.left-header');
 const body = document.body;
-
-// Dark mode
-
 
 // Logo animation functions
 function moveLogoToMenu(){const h=logo.getBoundingClientRect(); const m=menuLogoPlaceholder.getBoundingClientRect(); logo.style.position='fixed'; logo.style.left=h.left+'px'; logo.style.top=h.top+'px'; logo.style.transform=`translate(${m.left+h.width/2-h.left-h.width/2}px,${m.top+h.height/2-h.top-h.height/2}px)`; logo.style.transition='transform 0.5s'; setTimeout(()=>{menuLogoPlaceholder.appendChild(logo); logo.style.position='relative'; logo.style.left=''; logo.style.top=''; logo.style.transform=''; logo.style.transition='';},500);}

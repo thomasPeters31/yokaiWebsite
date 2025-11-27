@@ -1,4 +1,5 @@
 <?php
+// Contact form handler using PHPMailer + Outlook SMTP
 // Show all PHP errors
 ini_set('display_errors', 1);
 error_reporting(E_ALL);

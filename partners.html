@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Partners showcase page -->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -15,6 +16,7 @@
 </head>
 
 <body>
+  <!-- Header with anchor nav and drawer toggle -->
   <header role="banner">
     <div class="left-header">
       <button class="menu-button" id="menuBtn" aria-label="Toggle menu">☰</button>
@@ -27,6 +29,7 @@
     </nav>
   </header>
 
+  <!-- Drawer navigation -->
   <aside class="menu-box" id="menuBox" role="navigation" aria-label="Side menu">
     <div class="menu-logo-placeholder"></div>
     <a href="news.html">News</a>
@@ -37,6 +40,7 @@
         </div>
   </aside>
 
+  <!-- Hero headline -->
   <section class="hero">
     <div class="hero-content">
       <h1>Our Partners</h1>
@@ -44,6 +48,7 @@
     </div>
   </section>
 
+  <!-- Partner placeholders -->
   <section id="partners" class="partners">
     <h2>Official Partners</h2>
     <div class="partner-grid">
@@ -87,6 +92,7 @@
   </footer>
 
   <script>
+    // Drawer + logo animation wiring
     const menuBtn = document.getElementById('menuBtn');
     const menuBox = document.getElementById('menuBox');
     const logo = document.querySelector('.logo');
@@ -96,14 +102,18 @@
 
     
 
+    // Slide logo into drawer when opening
     function moveLogoToMenu(){ const headerRect=logo.getBoundingClientRect(); const menuRect=menuLogoPlaceholder.getBoundingClientRect(); const deltaX=menuRect.left+menuRect.width/2-(headerRect.left+headerRect.width/2); const deltaY=menuRect.top+menuRect.height/2-(headerRect.top+headerRect.height/2); logo.style.position='fixed'; logo.style.left=headerRect.left+'px'; logo.style.top=headerRect.top+'px'; logo.style.transform=`translate(${deltaX}px, ${deltaY}px)`; logo.style.transition='transform 0.5s ease'; setTimeout(()=>{ menuLogoPlaceholder.appendChild(logo); logo.style.position='relative'; logo.style.left=''; logo.style.top=''; logo.style.transform=''; logo.style.transition=''; },500); }
+    // Return logo to header on close
     function moveLogoToHeader(){ const menuRect=logo.getBoundingClientRect(); const headerRect=headerLeft.getBoundingClientRect(); const deltaX=headerRect.left-menuRect.left; const deltaY=headerRect.top-menuRect.top; logo.style.position='fixed'; logo.style.left=menuRect.left+'px'; logo.style.top=menuRect.top+'px'; logo.style.transform=`translate(${deltaX}px, ${deltaY}px)`; logo.style.transition='transform 0.5s ease'; setTimeout(()=>{ headerLeft.prepend(logo); logo.style.position='relative'; logo.style.left=''; logo.style.top=''; logo.style.transform=''; logo.style.transition=''; },500); }
+    // Drawer state helpers
     function openMenu(){ moveLogoToMenu(); document.body.style.overflow='hidden'; setTimeout(()=>menuBox.classList.add('active'),100); }
     function closeMenu(){ moveLogoToHeader(); document.body.style.overflow=''; setTimeout(()=>menuBox.classList.remove('active'),300); }
     menuBtn.addEventListener('click', ()=>menuBox.classList.contains('active')?closeMenu():openMenu());
     menuBox.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
     document.addEventListener('click', e=>{ if(menuBox.classList.contains('active')&&!menuBox.contains(e.target)&&!menuBtn.contains(e.target)) closeMenu(); });
 
+    // Reveal partners on scroll
     const observer=new IntersectionObserver((entries, observer)=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); }, {threshold:0.2});
     document.querySelectorAll('.partner-card').forEach(card=>observer.observe(card));
 
