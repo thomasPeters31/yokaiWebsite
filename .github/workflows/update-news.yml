@@ -1,0 +1,100 @@
+name: Refresh news feed
+
+on:
+  schedule:
+    # Runs every 3 hours; adjust as needed
+    - cron: "0 */3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  NEWS_JSON: data/news.json
+  TWEET_COUNT: 10
+  TWITTER_USERNAME: YokaieSportGG
+
+jobs:
+  update-feed:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install fetch dependency
+        run: npm install node-fetch@3
+
+      - name: Fetch latest tweets and update JSON
+        env:
+          BEARER_TOKEN: ${{ secrets.X_BEARER }}
+        run: |
+          node - <<'EOF'
+          import fs from 'fs';
+          import fetch from 'node-fetch';
+
+          const BEARER = process.env.BEARER_TOKEN;
+          const USERNAME = process.env.TWITTER_USERNAME;
+          const COUNT = parseInt(process.env.TWEET_COUNT || '10', 10);
+          const OUTPUT = process.env.NEWS_JSON;
+
+          if (!BEARER) {
+            console.error('Missing BEARER_TOKEN secret (set X_BEARER in repo secrets)');
+            process.exit(1);
+          }
+
+          async function getUserId(username) {
+            const res = await fetch(`https://api.x.com/2/users/by/username/${username}`, {
+              headers: { Authorization: `Bearer ${BEARER}` },
+            });
+            if (!res.ok) throw new Error(`Failed user lookup: ${res.status}`);
+            const data = await res.json();
+            return data?.data?.id;
+          }
+
+          async function getTweets(userId, count) {
+            const res = await fetch(`https://api.x.com/2/users/${userId}/tweets?max_results=${Math.min(count, 100)}&tweet.fields=created_at`, {
+              headers: { Authorization: `Bearer ${BEARER}` },
+            });
+            if (!res.ok) throw new Error(`Failed tweets fetch: ${res.status}`);
+            const data = await res.json();
+            return data?.data || [];
+          }
+
+          (async () => {
+            const userId = await getUserId(USERNAME);
+            if (!userId) throw new Error('No userId returned');
+            const tweets = await getTweets(userId, COUNT).then(list =>
+              list.map(t => ({
+                id: t.id,
+                username: USERNAME,
+                text: t.text,
+                created_at: t.created_at,
+              }))
+            );
+
+            const payload = { tweets };
+            fs.writeFileSync(OUTPUT, JSON.stringify(payload, null, 2));
+            console.log(`Wrote ${tweets.length} tweets to ${OUTPUT}`);
+          })().catch(err => {
+            console.error(err);
+            process.exit(1);
+          });
+          EOF
+
+      - name: Commit changes if any
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git status --short
+          if git diff --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git add "$NEWS_JSON"
+          git commit -m "chore: update news feed data"
+          git push

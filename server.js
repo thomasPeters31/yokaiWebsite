@@ -9,7 +9,8 @@ app.use(cors());
 app.use(express.static(".")); // serve your HTML + assets
 
 // ===== CONFIG =====
-const BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAANNA5AEAAAAAhO6dmQ9QDg9cCeK7a6jLa9h4d3c%3DjHE3q1zV6gJRTcM9b0lidDUX59c4c2ZbXADwfUL1r35ofkHPPn";
+// Replace with your X/Twitter Bearer token
+const BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAAHyn5gEAAAAAPdOBpXa6Yik2VLKR5OxXmjzEdVI%3D7BZNnfnh2uOLBDRwg9QimgaHGdPkPpm1ORH855euP7EB7OEkBy";
 const USERNAME = "YokaieSportGG";
 // ==================
 

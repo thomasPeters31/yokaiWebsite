@@ -1,0 +1,40 @@
+{
+  "tweets": [
+    {
+      "id": "1",
+      "username": "YokaieSportGG",
+      "text": "Valorant roster locks in for Split 1 — core four stay, new IGL sharpens mid-round calls. #Valorant #Roster",
+      "created_at": "2025-01-05T12:00:00Z"
+    },
+    {
+      "id": "2",
+      "username": "YokaieSportGG",
+      "text": "CS2 squad heads to qualifiers with a 70% scrim win rate after bootcamp. #CS2 #Tournament",
+      "created_at": "2025-01-02T10:00:00Z"
+    },
+    {
+      "id": "3",
+      "username": "YokaieSportGG",
+      "text": "New VOD review series drops weekly—coaches break down executes and clutch protocols. #Content #Video",
+      "created_at": "2024-12-28T15:00:00Z"
+    },
+    {
+      "id": "4",
+      "username": "YokaieSportGG",
+      "text": "Scrim block vs top 16 wraps: new Bind exec pays off—4/5 wins. #Valorant #Scrims",
+      "created_at": "2024-12-12T09:00:00Z"
+    },
+    {
+      "id": "5",
+      "username": "YokaieSportGG",
+      "text": "Utility bible update: fresh CT setups and execs for Mirage. #CS2 #Guide",
+      "created_at": "2024-12-01T11:30:00Z"
+    },
+    {
+      "id": "6",
+      "username": "YokaieSportGG",
+      "text": "Charity stream clears target—thank you for showing up. #Community #Charity",
+      "created_at": "2024-11-20T18:00:00Z"
+    }
+  ]
+}

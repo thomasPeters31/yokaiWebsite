@@ -27,9 +27,7 @@
         <li><a href="partners.html">Partners</a></li>
         <li><a href="#latest">Latest</a></li>
       </ul>
-      <div class="header-actions">
-        <button class="icon-button" ></button>
-      </div>
+      <div class="header-actions"></div>
     </div>
   </header>
 
@@ -77,25 +75,7 @@
       </div>
       <div class="two-col" style="margin-top:20px;">
         <div class="grid" id="latestNews">
-          <!-- Static seed cards; replaced when live tweets load -->
-          <article class="card news-card reveal" data-news-card data-tags="valorant roster">
-            <span class="tag">Valorant</span>
-            <h3>Valorant roster locks in for Split 1</h3>
-            <p>Core four stays, with a new IGL to sharpen mid-round calls.</p>
-            <div class="news-meta"><time datetime="2025-01-05">Jan 5, 2025</time><span class="badge">Roster</span></div>
-          </article>
-          <article class="card news-card reveal" data-news-card data-tags="cs2 tournament">
-            <span class="tag">CS2</span>
-            <h3>CS2 squad heads to Qualifiers</h3>
-            <p>Bootcamp complete. We’re entering the open bracket with a 70% scrim win rate.</p>
-            <div class="news-meta"><time datetime="2025-01-02">Jan 2, 2025</time><span class="badge">Tournament</span></div>
-          </article>
-          <article class="card news-card reveal" data-news-card data-tags="content video">
-            <span class="tag">Content</span>
-            <h3>New VOD review series drops weekly</h3>
-            <p>Coaches break down executes, defaults, and clutch protocols from recent matches.</p>
-            <div class="news-meta"><time datetime="2024-12-28">Dec 28, 2024</time><span class="badge">Video</span></div>
-          </article>
+          <p class="muted" data-feed-status>Loading live feed from X…</p>
         </div>
         <div class="card reveal">
           <h3>Filters</h3>
@@ -120,26 +100,7 @@
         <h2>Archive</h2>
         <span class="muted">Older drops still worth a read.</span>
       </div>
-      <div class="grid" id="archiveGrid">
-        <article class="card news-card reveal" data-news-card data-tags="valorant scrims">
-          <span class="tag">Valorant</span>
-          <h3>Scrim block vs top 16 wraps</h3>
-          <p>New bind exec pays off—4/5 wins this block.</p>
-          <div class="news-meta"><time datetime="2024-12-12">Dec 12, 2024</time><span class="badge">Scrims</span></div>
-        </article>
-        <article class="card news-card reveal" data-news-card data-tags="cs2 content">
-          <span class="tag">CS2</span>
-          <h3>Utility bible update</h3>
-          <p>Our coaches dropped fresh CT side setups and execs for Mirage.</p>
-          <div class="news-meta"><time datetime="2024-12-01">Dec 1, 2024</time><span class="badge">Guide</span></div>
-        </article>
-        <article class="card news-card reveal" data-news-card data-tags="community charity">
-          <span class="tag">Community</span>
-          <h3>Charity stream clears target</h3>
-          <p>Raised funds for local STEM programs—thank you for showing up.</p>
-          <div class="news-meta"><time datetime="2024-11-20">Nov 20, 2024</time><span class="badge">Community</span></div>
-        </article>
-      </div>
+      <div class="grid" id="archiveGrid"></div>
     </section>
   </div>
 
@@ -187,28 +148,76 @@
     filterCards();
 
     // Fetch live tweets from the backend and hydrate the latest feed
+    // GitHub Pages-friendly: pull pre-generated JSON from the repo (see data/news.json)
+    const TWEETS_API = 'data/news.json';
+
+    const feedStatus = document.querySelector('[data-feed-status]');
+    const latestGrid = document.getElementById('latestNews');
+    const archiveGrid = document.getElementById('archiveGrid');
+
+    const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+    function formatDate(iso) {
+      if (!iso) return '';
+      const d = new Date(iso);
+      return `${MONTHS[d.getUTCMonth()]} ${d.getUTCDate()}, ${d.getUTCFullYear()}`;
+    }
+
+    function extractTags(text) {
+      const tags = [];
+      const regex = /#([\\w]+)/g;
+      let m;
+      while ((m = regex.exec(text)) !== null) tags.push(m[1].toLowerCase());
+      return tags.length ? tags : ['social'];
+    }
+
+    function renderCard(tweet) {
+      const tags = extractTags(tweet.text || '');
+      const primaryTag = tags[0] || 'Live';
+      const formattedDate = formatDate(tweet.created_at);
+      const href = `https://x.com/${tweet.username}/status/${tweet.id}`;
+      const div = document.createElement('article');
+      div.className = 'card news-card reveal';
+      div.dataset.newsCard = 'true';
+      div.dataset.tags = tags.join(' ');
+      div.innerHTML = `
+        <span class="tag">${primaryTag}</span>
+        <h3>${tweet.text}</h3>
+        <div class="news-meta">
+          ${formattedDate ? `<time datetime="${tweet.created_at}">${formattedDate}</time>` : ''}
+          <span class="badge">X</span>
+        </div>
+        <p class="news-meta" style="margin:0;"><a class="cta" href="${href}" target="_blank" rel="noreferrer">View on X →</a></p>
+      `;
+      return div;
+    }
+
+    function renderFeed(tweets) {
+      latestGrid.innerHTML = '';
+      archiveGrid.innerHTML = '';
+      if (!tweets.length) {
+        feedStatus.textContent = 'No live updates yet.';
+        latestGrid.appendChild(feedStatus);
+        return;
+      }
+      const latest = tweets.slice(0, 6);
+      const archive = tweets.slice(6);
+      latest.forEach(t => latestGrid.appendChild(renderCard(t)));
+      archive.forEach(t => archiveGrid.appendChild(renderCard(t)));
+      feedStatus.remove();
+      filterCards();
+    }
+
     async function loadTweets() {
-      const container = document.getElementById('latestNews');
       try {
-        const res = await fetch('/api/tweets');
+        const res = await fetch(TWEETS_API);
         if (!res.ok) throw new Error('Bad response');
         const data = await res.json();
-        if (!data.tweets || !Array.isArray(data.tweets) || !data.tweets.length) return;
-        container.innerHTML = '';
-        data.tweets.forEach((tweet) => {
-          const card = document.createElement('article');
-          card.className = 'card news-card reveal';
-          card.dataset.newsCard = 'true';
-          card.dataset.tags = 'social';
-          card.innerHTML = `
-            <span class="tag">Live</span>
-            <h3>${tweet.text}</h3>
-            <p class="news-meta" style="margin:0;"><a class="cta" href="https://x.com/${tweet.username}/status/${tweet.id}" target="_blank" rel="noreferrer">View on X →</a></p>
-          `;
-          container.appendChild(card);
-        });
+        if (!data.tweets || !Array.isArray(data.tweets)) throw new Error('Malformed payload');
+        renderFeed(data.tweets);
       } catch (err) {
         console.error('Failed to load tweets', err);
+        if (feedStatus) feedStatus.textContent = 'Unable to load live feed. Check your API endpoint.';
       }
     }
 
