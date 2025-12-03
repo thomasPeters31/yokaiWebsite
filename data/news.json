@@ -1,6 +1,12 @@
 {
   "tweets": [
     {
+      "id": "1996219790780666004",
+      "username": "YokaieSportGG",
+      "text": "A 0-2 loss following last night's game against Tony Montana in the @ESEA Open League, dropping Yokai CS to the lower brackets.\n\n#YokaiEsports #TheHuntBegins #Counterstrike2 https://t.co/sQrSWk7JU1",
+      "created_at": "2025-12-03T14:07:40.000Z"
+    },
+    {
       "id": "1995902668829581793",
       "username": "YokaieSportGG",
       "text": "Yokai CS are onto their next match, going up against Tony Montana in the @ESEA Open League Playoffs!\n\n🕒19:30 GMT\n🆚 Tony Montana\n📺 No stream\n\n#YokaiEsports #TheHuntBegins #Counterstrike2 https://t.co/ShkizaCeMr",
@@ -53,12 +59,6 @@
       "username": "YokaieSportGG",
       "text": "7-3 in @ESEA Open League - stomping through the competition, GGs OrionCS.\n\nThank you to our two stand-ins @NyKxGoD and @Sjeese1 - without them the game today would not have been possible. On to the next victory!\n\n#TheHuntBegins #YokaiEsports #counterstrike2 https://t.co/gdSPw93oZG",
       "created_at": "2025-11-05T22:04:20.000Z"
-    },
-    {
-      "id": "1984256763810787703",
-      "username": "YokaieSportGG",
-      "text": "An unfortunate loss against Rumcajse in @ESEA 's Open League match on Monday. \n\nGG's Rumcajse!\n\n#YokaiEsports #TheHuntBegins #counterstrike2 https://t.co/usWjUfTyQN",
-      "created_at": "2025-10-31T13:50:52.000Z"
     }
   ]
 }
