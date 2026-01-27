@@ -10,6 +10,9 @@
       --hero-text-color: #ff2e3c;
       --hero-overlay: rgba(12,12,16,0.72);
       --team-border: #ff2e3c;
+      --panel: rgba(255,255,255,0.06);
+      --stroke: rgba(255,255,255,0.12);
+      --section-surface: radial-gradient(circle at 18% 20%, rgba(255,46,60,0.08), transparent 30%), radial-gradient(circle at 82% 6%, rgba(255,122,27,0.08), transparent 32%), #0d0d12;
       --extra-bg: #0c0c10;
       --extra-text: #eef0f6;
       --footer-bg: #0c0c10;
@@ -93,14 +96,23 @@
     .hero p { font-size: 22px; max-width: 600px; margin: auto; }
 
     /* === Teams Section === */
-    .teams { text-align: center; padding: 80px 20px; background-color: #f9f9f9; }
+    .teams {
+      text-align: center;
+      padding: 80px 20px;
+      background: var(--section-surface);
+      border-top: 1px solid var(--stroke);
+      border-bottom: 1px solid var(--stroke);
+    }
     .teams h2 { color: #ff2e3c; font-size: 36px; margin-bottom: 40px; }
     .team-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; }
     .team-card {
-      background: var(--panel); border: 3px solid var(--team-border); border-radius: 10px;
+      background: var(--panel);
+      border: 3px solid var(--team-border);
+      border-radius: 10px;
       width: 250px; padding: 20px; transition: 0.6s ease, border-color 0.6s ease;
       opacity: 0; transform: translateY(50px);
       text-align: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.26);
     }
     .team-card.visible { opacity: 1; transform: translateY(0); }
     .team-card:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
@@ -109,7 +121,7 @@
     /* === Achievements Section === */
     #cs-achievements { padding: 80px 20px; text-align: center; }
     #cs-achievements ul { list-style: none; padding: 0; max-width: 600px; margin: auto; }
-    #cs-achievements li { border-bottom: 1px solid rgba(0,0,0,0.1); padding: 10px 0; font-size: 18px; }
+    #cs-achievements li { border-bottom: 1px solid var(--stroke); padding: 10px 0; font-size: 18px; }
 
     /* === Upcoming Section === */
     #upcoming { background-color: var(--extra-bg); color: var(--extra-text); padding: 80px 20px; text-align: center; }
@@ -138,6 +150,9 @@
       --hero-text-color: #ff2e3c;
       --hero-overlay: rgba(12,12,16,0.72);
       --team-border: #ff2e3c;
+      --panel: rgba(255,255,255,0.06);
+      --stroke: rgba(255,255,255,0.12);
+      --section-surface: radial-gradient(circle at 18% 20%, rgba(255,46,60,0.08), transparent 30%), radial-gradient(circle at 82% 6%, rgba(255,122,27,0.08), transparent 32%), #0d0d12;
       --extra-bg: #0c0c10;
       --extra-text: #eef0f6;
       --footer-bg: #0c0c10;

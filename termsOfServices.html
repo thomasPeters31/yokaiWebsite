@@ -9,139 +9,93 @@
   <title>Terms of Service – Yokai eSports</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="styles/termsOfServices.css">
 
 </head>
 
 <body>
-  <!-- Header with logo + drawer toggle -->
-  <header>
-    <div class="header-left">
-      <div class="logo" id="logo" onclick="window.location.href='index.html'">YOKAI</div>
-      <button class="menu-button" id="menuBtn" aria-label="Toggle menu">☰</button>
+  <!-- Global header with navigation and drawer -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <button class="icon-button" aria-label="Open menu" data-drawer-toggle>☰</button>
+        <a class="logo" href="index.html">YOKAI</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="teams.html">Teams</a></li>
+        <li><a href="content.html">Content</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+      <div class="header-actions"></div>
     </div>
   </header>
 
-  <!-- Side Menu -->
-  <aside class="menu-box" id="menuBox" role="navigation" aria-label="Side menu">
-    <div class="menu-logo-placeholder" id="menuLogoPlaceholder"></div>
-    <a href="news.html">News</a>
-    <a href="partners.html">Partners</a>
-    <a href="content.html">Content</a>
+  <!-- Drawer navigation -->
+  <aside class="drawer" data-drawer>
+    <a class="logo" href="index.html">YOKAI</a>
     <a href="teams.html">Teams</a>
+    <a href="content.html">Content</a>
     <a href="shop.html">Shop</a>
+    <a href="partners.html">Partners</a>
+    <a href="news.html">News</a>
+    <div class="drawer-section">
+      <a href="jobs.html">Jobs</a>
+      <a href="contactPage.html">Contact</a>
+      <a href="help.html">Help</a>
+      <a href="termsOfServices.html" target="_blank">Terms</a>
+      <a href="privacyPolicy.html" target="_blank">Privacy</a>
+    </div>
+    
   </aside>
 
-  <!-- Terms copy -->
-  <main class="terms-container">
-    <h1>Terms of Service</h1>
-    <p>Welcome to Yokai eSports! By accessing or using our website, you agree to comply with and be bound by the following terms and conditions. Please read them carefully.</p>
+  <div class="page">
+    <section class="hero" data-hero style="--hero-image: url('assets/TitleBackround.png');">
+      <div class="hero-content">
+        <span class="eyebrow">Legal</span>
+        <h1>Terms of Service</h1>
+        <p>These terms outline how we work together and how the site can be used.</p>
+        <div class="button-row">
+          <a class="btn primary" href="#terms">Read terms</a>
+          <a class="btn outline" href="contactPage.html">Contact us</a>
+        </div>
+      </div>
+    </section>
 
-    <h2>1. Acceptance of Terms</h2>
-    <p>By using our website, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.</p>
+    <section id="terms" class="section">
+      <div class="terms-container reveal">
+        <h2>Welcome to Yokai eSports</h2>
+        <p>By accessing or using our website, you agree to comply with and be bound by the following terms and conditions. Please read them carefully.</p>
 
-    <h2>2. Use of Website</h2>
-    <p>You may use this website for lawful purposes only. You agree not to upload, post, or transmit any content that is harmful, abusive, or infringes on the rights of others.</p>
+        <h2>1. Acceptance of Terms</h2>
+        <p>By using our website, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.</p>
 
-    <h2>3. Intellectual Property</h2>
-    <p>All content, logos, images, and branding on this site are the property of Yokai eSports and protected by intellectual property laws. You may not reproduce or distribute content without prior written permission.</p>
+        <h2>2. Use of Website</h2>
+        <p>You may use this website for lawful purposes only. You agree not to upload, post, or transmit any content that is harmful, abusive, or infringes on the rights of others.</p>
 
-    <h2>4. Third-Party Links</h2>
-    <p>Our website may contain links to third-party sites. We are not responsible for the content or practices of these external sites.</p>
+        <h2>3. Intellectual Property</h2>
+        <p>All content, logos, images, and branding on this site are the property of Yokai eSports and protected by intellectual property laws. You may not reproduce or distribute content without prior written permission.</p>
 
-    <h2>5. Limitation of Liability</h2>
-    <p>Yokai eSports shall not be held liable for any damages arising from the use of our website. All information is provided "as is" without warranties of any kind.</p>
+        <h2>4. Third-Party Links</h2>
+        <p>Our website may contain links to third-party sites. We are not responsible for the content or practices of these external sites.</p>
 
-    <h2>6. Changes to Terms</h2>
-    <p>We may update these Terms of Service at any time without prior notice. It is your responsibility to review this page periodically for changes.</p>
+        <h2>5. Limitation of Liability</h2>
+        <p>Yokai eSports shall not be held liable for any damages arising from the use of our website. All information is provided "as is" without warranties of any kind.</p>
 
-    <h2>7. Contact</h2>
-    <p>If you have any questions regarding these terms, please contact us via our <a href="contactPage.html">Contact Page</a>.</p>
+        <h2>6. Changes to Terms</h2>
+        <p>We may update these Terms of Service at any time without prior notice. It is your responsibility to review this page periodically for changes.</p>
 
-    <p>Thank you for visiting Yokai eSports!</p>
-  </main>
+        <h2>7. Contact</h2>
+        <p>If you have any questions regarding these terms, please contact us via our <a href="contactPage.html">Contact Page</a>.</p>
 
-  <footer>
+        <p>Thank you for visiting Yokai eSports!</p>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
     Copyright © 2025 Yokai eSports — Designed by Thomas Peters
   </footer>
-
-  <script>
-    // Drawer + logo animation wiring
-    const menuBtn = document.getElementById('menuBtn');
-    const menuBox = document.getElementById('menuBox');
-    const logo = document.getElementById('logo');
-    const menuLogoPlaceholder = document.getElementById('menuLogoPlaceholder');
-        const body = document.body;
-
-    // Slide logo into drawer when opening
-    function moveLogoToMenu() {
-      const headerRect = logo.getBoundingClientRect();
-      const menuRect = menuLogoPlaceholder.getBoundingClientRect();
-      const deltaX = menuRect.left + menuRect.width / 2 - (headerRect.left + headerRect.width / 2);
-      const deltaY = menuRect.top + menuRect.height / 2 - (headerRect.top + headerRect.height / 2);
-      logo.style.position = 'fixed';
-      logo.style.left = headerRect.left + 'px';
-      logo.style.top = headerRect.top + 'px';
-      logo.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-      logo.style.transition = 'transform 0.5s ease';
-      setTimeout(() => {
-        menuLogoPlaceholder.appendChild(logo);
-        logo.style.position = 'relative';
-        logo.style.left = '';
-        logo.style.top = '';
-        logo.style.transform = '';
-        logo.style.transition = '';
-      }, 500);
-    }
-
-    // Return logo to header on close
-    function moveLogoToHeader() {
-      const menuRect = logo.getBoundingClientRect();
-      const headerRect = document.querySelector('.header-left').getBoundingClientRect();
-      const deltaX = headerRect.left - menuRect.left;
-      const deltaY = headerRect.top - menuRect.top;
-      logo.style.position = 'fixed';
-      logo.style.left = menuRect.left + 'px';
-      logo.style.top = menuRect.top + 'px';
-      logo.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-      logo.style.transition = 'transform 0.5s ease';
-      setTimeout(() => {
-        document.querySelector('.header-left').prepend(logo);
-        logo.style.position = 'relative';
-        logo.style.left = '';
-        logo.style.top = '';
-        logo.style.transform = '';
-        logo.style.transition = '';
-      }, 500);
-    }
-
-    // Drawer state helpers
-    function openMenu() {
-      moveLogoToMenu();
-      document.body.style.overflow = 'hidden';
-      menuBtn.classList.add('hidden');
-      setTimeout(() => menuBox.classList.add('active'), 100);
-    }
-
-    function closeMenu() {
-      moveLogoToHeader();
-      document.body.style.overflow = '';
-      menuBtn.classList.remove('hidden');
-      setTimeout(() => menuBox.classList.remove('active'), 300);
-    }
-
-    menuBtn.addEventListener('click', () => {
-      if (menuBox.classList.contains('active')) { closeMenu(); } else { openMenu(); }
-    });
-
-    menuBox.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-
-    document.addEventListener('click', (e) => {
-      if (menuBox.classList.contains('active') &&
-          !menuBox.contains(e.target) &&
-          !menuBtn.contains(e.target)) { closeMenu(); }
-    });
-  </script>
   <script src="scripts/main.js"></script>
 </body>
 </html>

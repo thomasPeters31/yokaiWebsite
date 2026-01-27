@@ -1,5 +1,26 @@
 
+    :root {
+      color-scheme: dark;
+      --bg: #0c0c10;
+      --panel: rgba(255, 255, 255, 0.04);
+      --card: rgba(255, 255, 255, 0.06);
+      --stroke: rgba(255, 255, 255, 0.08);
+      --muted: #b4b7c9;
+      --text: #eef0f6;
+      --accent: #ff2e3c;
+      --accent-2: #ff7a1b;
+      --glow: 0 12px 60px rgba(255, 46, 60, 0.35);
+    }
+
     .hero[data-hero] { --hero-image: url('assets/TitleBackround.png'); }
+
+    body {
+      background: radial-gradient(circle at 22% 18%, rgba(255, 46, 60, 0.06), transparent 28%),
+        radial-gradient(circle at 78% 6%, rgba(255, 122, 27, 0.08), transparent 32%),
+        var(--bg);
+      color: var(--text);
+    }
+
     .team-card {
       background-size: cover;
       background-position: center;

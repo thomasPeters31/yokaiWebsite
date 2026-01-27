@@ -42,6 +42,14 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+h1,
+h2,
+h3 {
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1px;
+  text-transform: none;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -451,6 +459,41 @@ img {
   color: var(--muted);
 }
 
+.faq-item {
+  border-bottom: 1px solid var(--stroke);
+  margin-bottom: 12px;
+}
+
+.faq-question {
+  margin: 0;
+  padding: 14px 16px;
+  cursor: pointer;
+  background: rgba(255, 46, 60, 0.12);
+  border-radius: 12px;
+  transition: background 0.2s ease;
+}
+
+.faq-question:hover {
+  background: rgba(255, 46, 60, 0.2);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 16px;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.faq-answer p {
+  margin: 10px 0;
+  color: var(--muted);
+}
+
+.faq-item.active .faq-answer {
+  max-height: 500px;
+  padding: 10px 16px 16px;
+}
+
 .social-circle-row {
   display: flex;
   flex-wrap: wrap;
@@ -690,6 +733,25 @@ body > main {
   border-radius: 18px;
   padding: 40px 24px;
   background: linear-gradient(120deg, rgba(255, 46, 60, 0.08), rgba(12, 12, 16, 0.2));
+}
+
+.extra-columns {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.extra-left {
+  flex: 2 1 280px;
+}
+
+.extra-right {
+  flex: 1 1 220px;
+}
+
+.extra a {
+  color: var(--text);
 }
 
 .team-grid,

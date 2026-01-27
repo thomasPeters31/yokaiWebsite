@@ -11,84 +11,100 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css">
 
-  <link rel="stylesheet" href="styles/content.css">
-
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header role="banner">
-    <div class="left-header">
-      <button class="menu-button" id="menuBtn" aria-label="Toggle menu">☰</button>
-      <a href="index.html" class="logo">YOKAI</a>
-    </div>
-    <nav aria-label="Main navigation">
-      <ul>
-        <li><a href="#latest-video">Latest Video</a></li>
-        <li><a href="#content-creators">Content Creators</a></li>
+  <!-- Shared header with navigation + drawer trigger -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <button class="icon-button" aria-label="Open menu" data-drawer-toggle>☰</button>
+        <a class="logo" href="index.html">YOKAI</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="teams.html">Teams</a></li>
+        <li><a href="content.html">Content</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="news.html">News</a></li>
       </ul>
-    </nav>
+      <div class="header-actions"></div>
+    </div>
   </header>
 
-  <!-- SIDE MENU -->
-  <aside class="menu-box" id="menuBox" role="navigation" aria-label="Side menu">
-    <div class="menu-logo-placeholder"></div>
-    <a href="news.html">News</a>
-    <a href="partners.html">Partners</a>
-    <a href="content.html">Content</a>
+  <!-- Drawer navigation -->
+  <aside class="drawer" data-drawer>
+    <a class="logo" href="index.html">YOKAI</a>
     <a href="teams.html">Teams</a>
+    <a href="content.html">Content</a>
     <a href="shop.html">Shop</a>
-        </div>
+    <a href="partners.html">Partners</a>
+    <a href="news.html">News</a>
+    <div class="drawer-section">
+      <a href="jobs.html">Jobs</a>
+      <a href="contactPage.html">Contact</a>
+      <a href="help.html">Help</a>
+      <a href="termsOfServices.html" target="_blank">Terms</a>
+      <a href="privacyPolicy.html" target="_blank">Privacy</a>
+    </div>
+    
   </aside>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Yokai Content Hub</h1>
-      <p>Latest videos and highlights from our creators</p>
-    </div>
-  </section>
-
-  <!-- LATEST VIDEO -->
-  <section id="latest-video" class="teams">
-    <h2>Latest Video</h2>
-    <div class="video-container">
-      <iframe id="yt-video" width="560" height="315" 
-        src="https://www.youtube.com/embed?listType=user_uploads&list=UCwBzziUpxQRIcmd0tzeey5A" 
-        title="Yokai eSports Latest Video" frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-      </iframe>
-    </div>
-  </section>
-
-  <!-- CONTENT CREATORS -->
-  <section id="content-creators" class="teams">
-    <h2>Our Content Creators</h2>
-    <div class="team-grid">
-      <div class="team-card">
-        <img src="assets/TitleBackround.png" alt="Sleepless">
-        <h3>Sleepless</h3>
-        <p>Gameplay</p>
+  <div class="page">
+    <section class="hero" data-hero style="--hero-image: url('assets/TitleBackround.png');">
+      <div class="hero-content">
+        <span class="eyebrow">Creator spotlight</span>
+        <h1>Yokai Content Hub</h1>
+        <p>Watch the latest edits, highlights, and creator drops from the Yokai network.</p>
+        <div class="button-row">
+          <a class="btn primary" href="#latest-video">Watch latest</a>
+          <a class="btn outline" href="#content-creators">Meet creators</a>
+        </div>
       </div>
-      <div class="team-card">
-        <img src="assets/TitleBackround.png" alt="Explowd_">
-        <h3>Explowd_</h3>
-        <p>Gameplay</p>
-      </div>
-      <div class="team-card">
-        <img src="assets/TitleBackround.png" alt="?"> <!--Azco-->
-        <h3>Coming up</h3>
-        <p>Gameplay</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- EXTRA -->
-  <section class="extra">
-    <div class="extra-columns">
-      <div class="extra-left">
-        <h2>YOKAI</h2>
+    <section id="latest-video" class="section">
+      <div class="section-header">
+        <h2>Latest video</h2>
+        <span class="muted">Fresh uploads from the Yokai channel.</span>
+      </div>
+      <div class="video-container card reveal">
+        <iframe id="yt-video" width="560" height="315"
+          src="https://www.youtube.com/embed?listType=user_uploads&list=UCwBzziUpxQRIcmd0tzeey5A"
+          title="Yokai eSports Latest Video" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+
+    <section id="content-creators" class="section">
+      <div class="section-header">
+        <h2>Our content creators</h2>
+        <span class="muted">Gameplay, coaching, and lifestyle content every week.</span>
+      </div>
+      <div class="grid">
+        <div class="card reveal">
+          <span class="tag">Gameplay</span>
+          <h3>Sleepless</h3>
+          <p>High-energy highlight reels and challenge runs.</p>
+        </div>
+        <div class="card reveal">
+          <span class="tag">Gameplay</span>
+          <h3>Explowd_</h3>
+          <p>Valorant-focused content and stream takeovers.</p>
+        </div>
+        <div class="card reveal">
+          <span class="tag">Coming soon</span>
+          <h3>Next creator</h3>
+          <p>We are scouting new voices—apply to join the roster.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section two-col">
+      <div class="card reveal">
+        <span class="eyebrow">Stay connected</span>
         <div class="social-circle-row">
           <a class="social-circle" data-platform="discord" href="https://discord.gg/nNDV95nMwx" target="_blank" rel="noreferrer" aria-label="Discord"><i class="fa-brands fa-discord" aria-hidden="true"></i><span class="sr-only">Discord</span></a>
           <a class="social-circle" data-platform="x" href="https://x.com/YokaieSportGG" target="_blank" rel="noreferrer" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i><span class="sr-only">X / Twitter</span></a>
@@ -97,95 +113,22 @@
           <a class="social-circle" data-platform="twitch" href="https://www.twitch.tv/yokaiesportsgg" target="_blank" rel="noreferrer" aria-label="Twitch"><i class="fa-brands fa-twitch" aria-hidden="true"></i><span class="sr-only">Twitch</span></a>
           <a class="social-circle" data-platform="tiktok" href="https://www.tiktok.com/@yokaiesport?is_from_webapp=1&sender_device=pc" target="_blank" rel="noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i><span class="sr-only">TikTok</span></a>
         </div>
-        <p>Email: <strong>sxmikas@yokaiesports.com</strong></p>
+        <p class="muted">Email: <strong>sxmikas@yokaiesports.com</strong></p>
       </div>
-      <div class="extra-right">
-        <h2>Policies</h2>
+      <div class="card reveal">
+        <span class="eyebrow">Quick links</span>
         <p><a href="contactPage.html"><strong>Contact Us</strong></a></p>
         <p><a href="termsOfServices.html" target="_blank"><strong>Terms of Service</strong></a></p>
         <p><a href="privacyPolicy.html" target="_blank"><strong>Privacy Policy</strong></a></p>
         <p><a href="feedBack.html" target="_blank"><strong>Feedback</strong></a></p>
         <p><a href="help.html" target="_blank"><strong>Help</strong></a></p>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <footer>
+  <footer class="footer">
     Copyright © 2025 Yokai eSports — Designed by Thomas Peters
   </footer>
-
-  <script>
-    // Menu + animations reused across pages
-    const menuBtn = document.getElementById('menuBtn');
-    const menuBox = document.getElementById('menuBox');
-    const logo = document.querySelector('.logo');
-    const menuLogoPlaceholder = document.querySelector('.menu-logo-placeholder');
-    const headerLeft = document.querySelector('.left-header');
-        const body = document.body;
-
-    // Slide logo into drawer when opening
-    function moveLogoToMenu() {
-      const headerRect = logo.getBoundingClientRect();
-      const menuRect = menuLogoPlaceholder.getBoundingClientRect();
-      const deltaX = menuRect.left + menuRect.width / 2 - (headerRect.left + headerRect.width / 2);
-      const deltaY = menuRect.top + menuRect.height / 2 - (headerRect.top + headerRect.height / 2);
-      logo.style.position = 'fixed';
-      logo.style.left = headerRect.left + 'px';
-      logo.style.top = headerRect.top + 'px';
-      logo.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-      logo.style.transition = 'transform 0.5s ease';
-      setTimeout(() => {
-        menuLogoPlaceholder.appendChild(logo);
-        logo.style.position = 'relative';
-        logo.style.left = '';
-        logo.style.top = '';
-        logo.style.transform = '';
-        logo.style.transition = '';
-      }, 500);
-    }
-
-    // Return logo to header on close
-    function moveLogoToHeader() {
-      const menuRect = logo.getBoundingClientRect();
-      const headerRect = headerLeft.getBoundingClientRect();
-      const deltaX = headerRect.left - menuRect.left;
-      const deltaY = headerRect.top - menuRect.top;
-      logo.style.position = 'fixed';
-      logo.style.left = menuRect.left + 'px';
-      logo.style.top = menuRect.top + 'px';
-      logo.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-      logo.style.transition = 'transform 0.5s ease';
-      setTimeout(() => {
-        headerLeft.prepend(logo);
-        logo.style.position = 'relative';
-        logo.style.left = '';
-        logo.style.top = '';
-        logo.style.transform = '';
-        logo.style.transition = '';
-      }, 500);
-    }
-
-    // Drawer open/close helpers
-    function openMenu() { moveLogoToMenu(); document.body.style.overflow = 'hidden'; setTimeout(() => menuBox.classList.add('active'), 100); }
-    function closeMenu() { moveLogoToHeader(); document.body.style.overflow = ''; setTimeout(() => menuBox.classList.remove('active'), 300); }
-
-    // Toggle handlers
-    menuBtn.addEventListener('click', () => menuBox.classList.contains('active') ? closeMenu() : openMenu());
-    menuBox.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-    document.addEventListener('click', e => { if (menuBox.classList.contains('active') && !menuBox.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
-
-    // IntersectionObserver to fade team cards into view
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-    document.querySelectorAll('.team-card').forEach(card => observer.observe(card));
-
-      </script>
   <script src="scripts/main.js"></script>
 </body>
 </html>

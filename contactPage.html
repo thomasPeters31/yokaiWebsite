@@ -12,47 +12,81 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css">
 
-  <link rel="stylesheet" href="styles/contactPage.css">
-
 </head>
 
 <body>
-  <!-- Simple header with logo and menu toggle -->
-  <header>
-    <div class="left-header">
-      <button class="menu-button" id="menuBtn" aria-label="Toggle menu">☰</button>
-      <a href="index.html" class="logo">YOKAI</a>
+  <!-- Global header with top navigation and drawer toggle -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <button class="icon-button" aria-label="Open menu" data-drawer-toggle>☰</button>
+        <a class="logo" href="index.html">YOKAI</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="teams.html">Teams</a></li>
+        <li><a href="content.html">Content</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+      <div class="header-actions"></div>
     </div>
   </header>
 
-  <!-- Slide-out nav -->
-  <aside class="menu-box" id="menuBox">
-    <div class="menu-logo-placeholder"></div>
-    <a href="news.html">News</a>
-    <a href="partners.html">Partners</a>
-    <a href="content.html">Content</a>
+  <!-- Mobile drawer menu -->
+  <aside class="drawer" data-drawer>
+    <a class="logo" href="index.html">YOKAI</a>
     <a href="teams.html">Teams</a>
+    <a href="content.html">Content</a>
     <a href="shop.html">Shop</a>
-
-        </div>
+    <a href="partners.html">Partners</a>
+    <a href="news.html">News</a>
+    <div class="drawer-section">
+      <a href="jobs.html">Jobs</a>
+      <a href="contactPage.html">Contact</a>
+      <a href="help.html">Help</a>
+      <a href="termsOfServices.html" target="_blank">Terms</a>
+      <a href="privacyPolicy.html" target="_blank">Privacy</a>
+    </div>
+    
   </aside>
 
-  <!-- Contact form posting to PHPMailer backend -->
-  <section class="contact-section">
-    <h2>Contact Us</h2>
-    <form action="sendMail.php" method="post">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" placeholder="Your Message..." required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+  <div class="page">
+    <section class="hero" data-hero style="--hero-image: url('assets/TitleBackround.png');">
+      <div class="hero-content">
+        <span class="eyebrow">Reach the front office</span>
+        <h1>Contact Yokai eSports</h1>
+        <p>Partnerships, press, scrims, and community ideas—send us a note and we will get back quickly.</p>
+        <div class="button-row">
+          <a class="btn primary" href="#contact-form">Send a message</a>
+          <a class="btn outline" href="jobs.html">See open roles</a>
+        </div>
+      </div>
+    </section>
 
-  <!-- Extra Section -->
-  <section class="extra">
-    <div class="extra-columns">
-      <div class="extra-left">
-        <h2>YOKAI</h2>
+    <!-- Contact form posting to PHPMailer backend -->
+    <section id="contact-form" class="section">
+      <div class="section-header">
+        <h2>Let’s talk</h2>
+        <span class="muted">We usually respond within 1–2 business days.</span>
+      </div>
+      <form class="card contact-container reveal" action="sendMail.php" method="post">
+        <label for="contact-name">Name</label>
+        <input id="contact-name" type="text" name="name" placeholder="Your name" required>
+        <label for="contact-email">Email</label>
+        <input id="contact-email" type="email" name="email" placeholder="you@example.com" required>
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" name="message" placeholder="Tell us what you need..." required></textarea>
+        <div class="button-row">
+          <button class="btn primary" type="submit">Send message</button>
+          <a class="btn outline" href="news.html">Latest updates</a>
+        </div>
+      </form>
+    </section>
+
+    <section class="section two-col">
+      <div class="card reveal">
+        <span class="eyebrow">Connect with us</span>
         <div class="social-circle-row">
           <a class="social-circle" data-platform="discord" href="https://discord.gg/nNDV95nMwx" target="_blank" rel="noreferrer" aria-label="Discord"><i class="fa-brands fa-discord" aria-hidden="true"></i><span class="sr-only">Discord</span></a>
           <a class="social-circle" data-platform="x" href="https://x.com/YokaieSportGG" target="_blank" rel="noreferrer" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i><span class="sr-only">X / Twitter</span></a>
@@ -61,10 +95,10 @@
           <a class="social-circle" data-platform="twitch" href="https://www.twitch.tv/yokaiesportsgg" target="_blank" rel="noreferrer" aria-label="Twitch"><i class="fa-brands fa-twitch" aria-hidden="true"></i><span class="sr-only">Twitch</span></a>
           <a class="social-circle" data-platform="tiktok" href="https://www.tiktok.com/@yokaiesport?is_from_webapp=1&sender_device=pc" target="_blank" rel="noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i><span class="sr-only">TikTok</span></a>
         </div>
-        <p>Email: <strong>sxmikas@yokaiesports.com</strong></p>
+        <p class="muted">Email: <strong>sxmikas@yokaiesports.com</strong></p>
       </div>
-      <div class="extra-right">
-        <h2>Policies</h2>
+      <div class="card reveal">
+        <span class="eyebrow">Policies</span>
         <p><a href="contactPage.html"><strong>Contact Us</strong></a></p>
         <p><a href="termsOfServices.html" target="_blank"><strong>Terms of Service</strong></a></p>
         <p><a href="privacyPolicy.html" target="_blank"><strong>Privacy Policy</strong></a></p>
@@ -72,82 +106,12 @@
         <p><a href="jobs.html" target="_blank"><strong>Jobs</strong></a></p>
         <p><a href="help.html" target="_blank"><strong>Help</strong></a></p>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <footer>
+  <footer class="footer">
     © 2025 Yokai eSports — Designed by Thomas Peters
   </footer>
-
-  <script>
-    // Menu + logo animation setup
-    const menuBtn = document.getElementById('menuBtn');
-    const menuBox = document.getElementById('menuBox');
-    const logo = document.querySelector('.logo');
-    const menuLogoPlaceholder = document.querySelector('.menu-logo-placeholder');
-    const headerLeft = document.querySelector('.left-header');
-        const body = document.body;
-    const contactForm = document.querySelector('form');
-
-    // Animate the logo into the drawer when opening
-    function moveLogoToMenu() {
-      const headerRect = logo.getBoundingClientRect();
-      const menuRect = menuLogoPlaceholder.getBoundingClientRect();
-      const deltaX = menuRect.left + menuRect.width/2 - (headerRect.left + headerRect.width/2);
-      const deltaY = menuRect.top + menuRect.height/2 - (headerRect.top + headerRect.height/2);
-      logo.style.position = 'fixed';
-      logo.style.left = headerRect.left + 'px';
-      logo.style.top = headerRect.top + 'px';
-      logo.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-      logo.style.transition = 'transform 0.5s ease';
-      setTimeout(() => {
-        menuLogoPlaceholder.appendChild(logo);
-        logo.style.position = 'relative';
-        logo.style.left = '';
-        logo.style.top = '';
-        logo.style.transform = '';
-        logo.style.transition = '';
-      }, 500);
-    }
-
-    // Animate the logo back into the header when closing
-    function moveLogoToHeader() {
-      const menuRect = logo.getBoundingClientRect();
-      const headerRect = headerLeft.getBoundingClientRect();
-      const deltaX = headerRect.left - menuRect.left;
-      const deltaY = headerRect.top - menuRect.top;
-      logo.style.position = 'fixed';
-      logo.style.left = menuRect.left + 'px';
-      logo.style.top = menuRect.top + 'px';
-      logo.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-      logo.style.transition = 'transform 0.5s ease';
-      setTimeout(() => {
-        headerLeft.prepend(logo);
-        logo.style.position = 'relative';
-        logo.style.left = '';
-        logo.style.top = '';
-        logo.style.transform = '';
-        logo.style.transition = '';
-      }, 500);
-    }
-
-    // Open/close drawer helpers
-    function openMenu() { moveLogoToMenu(); menuBox.classList.add('active'); }
-    function closeMenu() { moveLogoToHeader(); menuBox.classList.remove('active'); }
-
-    // Toggle handlers
-    menuBtn.addEventListener('click', () => {
-      menuBox.classList.contains('active') ? closeMenu() : openMenu();
-    });
-
-    menuBox.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-    document.addEventListener('click', e => {
-      if (menuBox.classList.contains('active') && !menuBox.contains(e.target) && !menuBtn.contains(e.target)) closeMenu();
-    });
-
-    // Fade-in animation for contact form
-    window.addEventListener('load', () => contactForm.classList.add('visible'));
-  </script>
   <script src="scripts/main.js"></script>
 </body>
 </html>
