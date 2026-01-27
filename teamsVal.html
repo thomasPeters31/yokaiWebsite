@@ -10,167 +10,210 @@
   <link rel="preload" as="image" href="assets/valorantImg.png">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css">
-
+  <link rel="stylesheet" href="styles/index.css">
   <link rel="stylesheet" href="styles/teamsVal.css">
-
 </head>
-
 <body>
-  <!-- HEADER -->
-  <header role="banner">
-    <div class="left-header">
-      <button class="menu-button" id="menuBtn" aria-label="Toggle menu">☰</button>
-      <a href="index.html" class="logo">YOKAI</a>
-    </div>
-    <nav aria-label="Main navigation">
-      <ul>
-        <li><a href="#valorant-team">Team</a></li>
-        <li><a href="#valorant-achievements">Achievements</a></li>
+  <!-- Global header with top navigation and drawer toggle -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <button class="icon-button" aria-label="Open menu" data-drawer-toggle>☰</button>
+        <a class="logo" href="index.html">YOKAI</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#roster">Roster</a></li>
+        <li><a href="#achievements">Achievements</a></li>
         <li><a href="#upcoming">Upcoming</a></li>
-        <li><a href="#valorant-about">About</a></li>
+        <li><a href="#about">About</a></li>
       </ul>
-    </nav>
+      <div class="header-actions"></div>
+    </div>
   </header>
 
-  <!-- SIDE MENU -->
-  <aside class="menu-box" id="menuBox" role="navigation" aria-label="Side menu">
-    <div class="menu-logo-placeholder"></div>
-    <a href="news.html">News</a>
-    <a href="partners.html">Partners</a>
-    <a href="content.html">Content</a>
+  <!-- Mobile drawer menu -->
+  <aside class="drawer" data-drawer>
+    <a class="logo" href="index.html">YOKAI</a>
     <a href="teams.html">Teams</a>
+    <a href="content.html">Content</a>
     <a href="shop.html">Shop</a>
-        </div>
+    <a href="partners.html">Partners</a>
+    <a href="news.html">News</a>
+    <div class="drawer-section">
+      <a href="jobs.html">Jobs</a>
+      <a href="contactPage.html">Contact</a>
+      <a href="help.html">Help</a>
+      <a href="termsOfServices.html" target="_blank">Terms</a>
+      <a href="privacyPolicy.html" target="_blank">Privacy</a>
+    </div>
   </aside>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Valorant Division</h1>
-      <p>Precision. Strategy. Dominance.</p>
-    </div>
-  </section>
-
-  <!-- TEAM ROSTER -->
-  <section id="valorant-team" class="teams">
-    <h2>Meet the Team</h2>
-    <div class="team-grid">
-      <div class="team-card">
-        <img src="assets/valorantImg.png" alt="Aiko">
-        <h3>Aiko</h3>
-        <p>Duelist / Jett</p>
-      </div>
-      <div class="team-card">
-        <img src="assets/valorantImg.png" alt="Haru">
-        <h3>Haru</h3>
-        <p>Sentinel / Sage</p>
-      </div>
-      <div class="team-card">
-        <img src="assets/valorantImg.png" alt="Rin">
-        <h3>Rin</h3>
-        <p>Controller / Omen</p>
-      </div>
-      <div class="team-card">
-        <img src="assets/valorantImg.png" alt="Kaze">
-        <h3>Kaze</h3>
-        <p>Initiator / Sova</p>
-      </div>
-      <div class="team-card">
-        <img src="assets/valorantImg.png" alt="Yumi">
-        <h3>Yumi</h3>
-        <p>Duelist / Reyna</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ACHIEVEMENTS -->
-  <section id="valorant-achievements">
-    <h2>Achievements</h2>
-    <ul>
-      <li><strong>2024:</strong> Champions of Yokai Invitational Valorant</li>
-      <li><strong>2025:</strong> 3rd place in Oni Cup</li>
-      <li><strong>LAN Debut:</strong> Top 4 in Rising Spirits League</li>
-    </ul>
-  </section>
-
-  <!-- UPCOMING -->
-  <section id="upcoming">
-    <h2>Upcoming Events</h2>
-    <ul>
-      <li><strong>Oct 2025:</strong> Valorant Contenders Qualifiers</li>
-      <li><strong>Nov 2025:</strong> Fall Valorant Clash</li>
-      <li><strong>Dec 2025:</strong> Yokai x Oni Exhibition Match</li>
-    </ul>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="valorant-about">
-    <h2>About the Valorant Team</h2>
-    <p>
-      The Valorant squad of Yokai eSports blends sharp reflexes with smart strategies.
-      Each player embodies the spirit of Japanese folklore—quick, cunning, and relentless.
-      Together, they turn every match into a showcase of skill, teamwork, and adaptability.
-      Their roster represents the next generation of competitive esports legends.
-    </p>
-  </section>
-
-  <!-- EXTRA -->
-  <section class="extra">
-    <div class="extra-columns">
-      <div class="extra-left">
-        <h2>YOKAI</h2>
-        <div class="social-circle-row">
-          <a class="social-circle" data-platform="discord" href="https://discord.gg/nNDV95nMwx" target="_blank" rel="noreferrer" aria-label="Discord"><i class="fa-brands fa-discord" aria-hidden="true"></i><span class="sr-only">Discord</span></a>
-          <a class="social-circle" data-platform="x" href="https://x.com/YokaieSportGG" target="_blank" rel="noreferrer" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i><span class="sr-only">X / Twitter</span></a>
-          <a class="social-circle" data-platform="instagram" href="https://www.instagram.com/yokai.esports" target="_blank" rel="noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i><span class="sr-only">Instagram</span></a>
-          <a class="social-circle" data-platform="youtube" href="https://www.youtube.com/channel/UCwBzziUpxQRIcmd0tzeey5A" target="_blank" rel="noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i><span class="sr-only">YouTube</span></a>
-          <a class="social-circle" data-platform="twitch" href="https://www.twitch.tv/yokaiesportsgg" target="_blank" rel="noreferrer" aria-label="Twitch"><i class="fa-brands fa-twitch" aria-hidden="true"></i><span class="sr-only">Twitch</span></a>
-          <a class="social-circle" data-platform="tiktok" href="https://www.tiktok.com/@yokaiesport?is_from_webapp=1&sender_device=pc" target="_blank" rel="noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i><span class="sr-only">TikTok</span></a>
+  <div class="page">
+    <!-- Hero -->
+    <section class="hero" data-hero>
+      <div class="hero-content">
+        <span class="eyebrow">Valorant division</span>
+        <h1>Precision. Strategy. Dominance.</h1>
+        <p>Our Valorant squad thrives on disciplined executes, creative mid-round calls, and fearless entries.</p>
+        <div class="button-row">
+          <a class="btn primary" href="#roster">Meet the roster →</a>
+          <a class="btn outline" href="teams.html">All divisions</a>
         </div>
-        <p>Email: <strong>sxmikas@yokaiesports.com</strong></p>
+        <div class="pill-rail">
+          <span class="pill">EU based</span>
+          <span class="pill">5-player core</span>
+          <span class="pill">VCT focused</span>
+        </div>
       </div>
-      <div class="extra-right">
-        <h2>Policies</h2>
-        <p><a href="contactPage.html"><strong>Contact Us</strong></a></p>
-        <p><a href="termsOfServices.html" target="_blank"><strong>Terms of Service</strong></a></p>
-        <p><a href="privacyPolicy.html" target="_blank"><strong>Privacy Policy</strong></a></p>
-        <p><a href="feedBack.html" target="_blank"><strong>Feedback</strong></a></p>
-        <p><a href="help.html" target="_blank"><strong>Help</strong></a></p>
+    </section>
+
+    <!-- Team roster -->
+    <section id="roster" class="section">
+      <div class="section-header">
+        <h2>Meet the team</h2>
+        <span class="muted">Built for clutch rounds and map control.</span>
       </div>
-    </div>
-  </section>
+      <div class="grid">
+        <article class="card reveal roster-card">
+          <img src="assets/valorantImg.png" alt="Aiko">
+          <h3>Aiko</h3>
+          <p class="muted">Duelist / Jett</p>
+          <span class="badge">Entry</span>
+        </article>
+        <article class="card reveal roster-card">
+          <img src="assets/valorantImg.png" alt="Haru">
+          <h3>Haru</h3>
+          <p class="muted">Sentinel / Sage</p>
+          <span class="badge">Anchor</span>
+        </article>
+        <article class="card reveal roster-card">
+          <img src="assets/valorantImg.png" alt="Rin">
+          <h3>Rin</h3>
+          <p class="muted">Controller / Omen</p>
+          <span class="badge">IGL</span>
+        </article>
+        <article class="card reveal roster-card">
+          <img src="assets/valorantImg.png" alt="Kaze">
+          <h3>Kaze</h3>
+          <p class="muted">Initiator / Sova</p>
+          <span class="badge">Recon</span>
+        </article>
+        <article class="card reveal roster-card">
+          <img src="assets/valorantImg.png" alt="Yumi">
+          <h3>Yumi</h3>
+          <p class="muted">Duelist / Reyna</p>
+          <span class="badge">Fragger</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements" class="section">
+      <div class="section-header">
+        <h2>Achievements</h2>
+        <span class="muted">Recent tournament milestones.</span>
+      </div>
+      <div class="grid">
+        <div class="card reveal">
+          <span class="tag">2024</span>
+          <h3>Yokai Invitational</h3>
+          <p>Champions of the invitational showcase.</p>
+        </div>
+        <div class="card reveal">
+          <span class="tag">2025</span>
+          <h3>Oni Cup</h3>
+          <p>3rd place finish after an undefeated group stage.</p>
+        </div>
+        <div class="card reveal">
+          <span class="tag">LAN debut</span>
+          <h3>Rising Spirits League</h3>
+          <p>Top 4 with standout clutch stats.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upcoming -->
+    <section id="upcoming" class="section">
+      <div class="section-header">
+        <h2>Upcoming events</h2>
+        <span class="muted">Where we compete next.</span>
+      </div>
+      <div class="grid">
+        <div class="card reveal">
+          <span class="tag">Oct 2025</span>
+          <h3>Valorant Contenders Qualifiers</h3>
+          <p>Open bracket run for the main event.</p>
+        </div>
+        <div class="card reveal">
+          <span class="tag">Nov 2025</span>
+          <h3>Fall Valorant Clash</h3>
+          <p>Regional invitational focused on tactical executes.</p>
+        </div>
+        <div class="card reveal">
+          <span class="tag">Dec 2025</span>
+          <h3>Yokai x Oni Exhibition</h3>
+          <p>Showmatch featuring creator collaborations.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section two-col">
+      <div class="card reveal">
+        <span class="eyebrow">Team ethos</span>
+        <h2>Valorant with discipline</h2>
+        <p class="muted">We blend aim training with layered prep—every map has a plan, every player owns their space.</p>
+        <ul class="list">
+          <li>⚡ Fast rotations and coordinated retakes.</li>
+          <li>🎯 Focused VOD review after every scrim block.</li>
+          <li>🧭 Clear comms, calm mid-round leadership.</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <span class="eyebrow">Playstyle</span>
+        <h2>Map control first</h2>
+        <p class="muted">Our gameplan prioritizes utility synergy and measured aggression to win key timings.</p>
+        <div class="pill-rail">
+          <span class="pill">Utility combos</span>
+          <span class="pill">Site hits</span>
+          <span class="pill">Mid-round calls</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social and community links -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Community & links</h2>
+        <span class="muted">Scrim, collab, or follow the squad.</span>
+      </div>
+      <div class="social-circle-row">
+        <a class="social-circle reveal" data-platform="discord" href="https://discord.gg/nNDV95nMwx" target="_blank" rel="noreferrer" aria-label="Discord">
+          <i class="fa-brands fa-discord"></i><span class="sr-only">Discord</span>
+        </a>
+        <a class="social-circle reveal" data-platform="x" href="https://x.com/YokaieSportGG" target="_blank" rel="noreferrer" aria-label="X / Twitter">
+          <i class="fa-brands fa-x-twitter"></i><span class="sr-only">X / Twitter</span>
+        </a>
+        <a class="social-circle reveal" data-platform="instagram" href="https://www.instagram.com/yokai.esports" target="_blank" rel="noreferrer" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i><span class="sr-only">Instagram</span>
+        </a>
+        <a class="social-circle reveal" data-platform="youtube" href="https://www.youtube.com/channel/UCwBzziUpxQRIcmd0tzeey5A" target="_blank" rel="noreferrer" aria-label="YouTube">
+          <i class="fa-brands fa-youtube"></i><span class="sr-only">YouTube</span>
+        </a>
+        <a class="social-circle reveal" data-platform="twitch" href="https://www.twitch.tv/yokaiesportsgg" target="_blank" rel="noreferrer" aria-label="Twitch">
+          <i class="fa-brands fa-twitch"></i><span class="sr-only">Twitch</span>
+        </a>
+        <a class="social-circle reveal" data-platform="tiktok" href="https://www.tiktok.com/@yokaiesport?is_from_webapp=1&sender_device=pc" target="_blank" rel="noreferrer" aria-label="TikTok">
+          <i class="fa-brands fa-tiktok"></i><span class="sr-only">TikTok</span>
+        </a>
+      </div>
+    </section>
+  </div>
 
   <footer>
     Copyright © 2025 Yokai eSports — Designed by Thomas Peters
   </footer>
 
-  <script>
-    /* === Drawer + logo animation === */
-    const menuBtn = document.getElementById('menuBtn');
-    const menuBox = document.getElementById('menuBox');
-    const logo = document.querySelector('.logo');
-    const menuLogoPlaceholder = document.querySelector('.menu-logo-placeholder');
-    const headerLeft = document.querySelector('.left-header');
-        const body = document.body;
-
-    
-
-    // Slide logo into drawer when opening
-    function moveLogoToMenu(){ const headerRect=logo.getBoundingClientRect(); const menuRect=menuLogoPlaceholder.getBoundingClientRect(); const deltaX=menuRect.left+menuRect.width/2-(headerRect.left+headerRect.width/2); const deltaY=menuRect.top+menuRect.height/2-(headerRect.top+headerRect.height/2); logo.style.position='fixed'; logo.style.left=headerRect.left+'px'; logo.style.top=headerRect.top+'px'; logo.style.transform=`translate(${deltaX}px, ${deltaY}px)`; logo.style.transition='transform 0.5s ease'; setTimeout(()=>{ menuLogoPlaceholder.appendChild(logo); logo.style.position='relative'; logo.style.left=''; logo.style.top=''; logo.style.transform=''; logo.style.transition=''; },500); }
-    // Return logo to header on close
-    function moveLogoToHeader(){ const menuRect=logo.getBoundingClientRect(); const headerRect=headerLeft.getBoundingClientRect(); const deltaX=headerRect.left-menuRect.left; const deltaY=headerRect.top-menuRect.top; logo.style.position='fixed'; logo.style.left=menuRect.left+'px'; logo.style.top=menuRect.top+'px'; logo.style.transform=`translate(${deltaX}px, ${deltaY}px)`; logo.style.transition='transform 0.5s ease'; setTimeout(()=>{ headerLeft.prepend(logo); logo.style.position='relative'; logo.style.left=''; logo.style.top=''; logo.style.transform=''; logo.style.transition=''; },500); }
-    // Drawer helpers
-    function openMenu(){ moveLogoToMenu(); document.body.style.overflow='hidden'; setTimeout(()=>menuBox.classList.add('active'),100); }
-    function closeMenu(){ moveLogoToHeader(); document.body.style.overflow=''; setTimeout(()=>menuBox.classList.remove('active'),300); }
-    menuBtn.addEventListener('click', ()=>menuBox.classList.contains('active')?closeMenu():openMenu());
-    menuBox.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
-    document.addEventListener('click', e=>{ if(menuBox.classList.contains('active')&&!menuBox.contains(e.target)&&!menuBtn.contains(e.target)) closeMenu(); });
-
-    // Fade-in animation for roster cards
-    const observer=new IntersectionObserver((entries, observer)=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); }, {threshold:0.2});
-    document.querySelectorAll('.team-card').forEach(card=>observer.observe(card));
-
-      </script>
   <script src="scripts/main.js"></script>
 </body>
 </html>
