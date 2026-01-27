@@ -2,6 +2,45 @@
   --hero-image: url('assets/valorantImg.png');
 }
 
+.hero-val {
+  min-height: 360px;
+}
+
+.hero-val .hero-content h1 {
+  max-width: 720px;
+}
+
+.snapshot {
+  margin-top: -24px;
+}
+
+.stat-card {
+  display: grid;
+  gap: 4px;
+  padding: 16px;
+  border-radius: 14px;
+  background: var(--panel);
+  border: 1px solid var(--stroke);
+  text-align: left;
+}
+
+.stat-card strong {
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+.stat-card span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.section-alt {
+  background: linear-gradient(120deg, rgba(255, 46, 60, 0.08), rgba(12, 12, 16, 0.2));
+  border: 1px solid var(--stroke);
+  border-radius: 18px;
+  padding: 24px;
+}
+
 .roster-card {
   display: grid;
   gap: 10px;
@@ -16,4 +55,13 @@
 
 .roster-card .badge {
   width: fit-content;
+}
+
+@media (max-width: 900px) {
+  .snapshot {
+    margin-top: 0;
+  }
+  .section-alt {
+    padding: 18px;
+  }
 }
